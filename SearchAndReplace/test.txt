@@ -1,4 +1,6 @@
 ABCDEFGHIKJKLMNOPQRSTUVWXYZ
+abcdefghijklmnopqrstuvwxyz
 
+Some random sentences with BOTH Cases INTermintentYL:
 
 THIS IS A TEST
