@@ -1,0 +1,52 @@
+$ declare -f {{functionName}}
+> Show what that function is declared as/previously declared as 
+? How do you later change a function
+
+
+$ man {{bash command}}
+> Shows the manuel for that command #documentation
+
+$ {{functionName}} () { 
+	{{functioninnerstuff like bash commands}}
+}
+> Creates a function you can run using {{function name}} and $1 as parameters 
+? How do you use multiple parameters
+
+
+$ cat {{fileName}}
+> Outputs the context of {{fileName}}
+
+$ tr "{charArrayA}" "{charArrayB}"
+> Finds every instance of char[0] in A and replaces it with char[0] in B
+> -s = squeeze = remove adjacent duplicates of char in string A (optional: replace the remaining string to String B)
+> -d = delete all instances of char's in A
+
+$ A | B
+> pipeline. Links the standard output of A to be the standard input of B
+
+$ cat textFile.txt | tr 'a-z' 'A-Z' > tmptxt.txt && cat tmptxt.txt > textFile.txt && rm tmptxt.txt && cat textFile.txt
+> takes the output of textFile and replaces all lower cases to upper cases. Saves it to tmptxt.txt. Outputs tmttext.txt back into the original file. Deletes tmttxt and outputs the contents to the console. 
+
+$ makeAllUpperInFile ()
+{
+    cat $1 | tr 'a-z' 'A-Z' > tmptxt.txt && cat tmptxt.txt > $1 && rm tmptxt.txt && cat $1
+}
+> makes all characters upper case in a given fiel
+
+$ rot13 () {
+    cat $1 | tr 'a-mn-zA-MN-Z' 'n-za-mN-ZA-M' > tmptxt.txt && cat tmptxt.txt > $1 && rm tmptxt.txt && cat $1
+}
+> 13 character shift. a becomes n, m becomes z ....
+
+
+
+
+------------------------------------
+Look into sed (said?)
+Look into how to use a scrip to run these calls
+Look into functions (edit later)
+Look into functions (with multiple params)
+
+$ tr documentation:
+>http://www.linfo.org/tr.html
+>https://ss64.com/bash/tr.html
