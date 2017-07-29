@@ -1,0 +1,6 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^amun\.lsemun\.muncrisis\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.amun\.lsemun\.muncrisis\.com/$1
+RewriteRule ^(.*)$ "http\:\/\/amun\.lsemun\.deus\.technology" [R=301,L]
+
