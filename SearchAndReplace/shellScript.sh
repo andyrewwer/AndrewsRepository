@@ -22,8 +22,8 @@ rot13() {
 
 sendTests() {
 	someVar='I wish this Andrew was consistent with his casing'
-	# echo somevar | sed -d "l"
-	echo $someVar
+	file=test.txt
+	somevar= sed /T/d $file
 }
 
 main() {
@@ -44,4 +44,4 @@ main() {
 	esac
 }
 
-main $1
+sendTests
