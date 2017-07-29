@@ -5,8 +5,8 @@ NC='\033[0m' # No Color
 
 
 renameConference(){
-inputFile=DeusTemplateDatabaseConfig.sql
-outputFile=$1.sql
+inputFile=Database/DeusTemplateDatabaseConfig.sql
+outputFile=../DBOutput/$1.sql
 echo "Output file: $outputFile with crisisName: $1"
 # cat $file
 sed s/{{CONFERENCE_NAME}}/$1/ < $inputFile > $outputFile
@@ -18,7 +18,7 @@ addCrisisDirector(){
 	
 		
 renameConference $1
-file=$1.sql
+file=../DBOutput/$1.sql
 #forName
 #forEmail
 
