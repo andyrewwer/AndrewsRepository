@@ -4,7 +4,7 @@
 <?php 
 //Testing to send a message to everyone: 
 
-$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_fredmun") or die(mysql_error());
+$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
 //#001 - Send a PM response to every delegates
 date_default_timezone_set('Europe/London'); // CDT
 $currentDate = getDate();
@@ -19,7 +19,7 @@ $currentDate = "$date/$month/$year == $hour:$min:$sec";$result = $con->query("SE
  
 while($row = $result->fetch_assoc()) {   
 
-    $queryUpdate = "INSERT INTO  `d5g9x9d8_fredmun`.`Responses` (
+    $queryUpdate = "INSERT INTO  `d5g9x9d8_testMUN`.`Responses` (
     `Recipient`,
     `RecipientName`,
     `Directive`,
@@ -50,7 +50,7 @@ while($row = $result->fetch_assoc()) {
 }
 
 //#002 - Publish a public news item
-// $queryNews = "INSERT INTO  `d5g9x9d8_fredmun`.`News` (
+// $queryNews = "INSERT INTO  `d5g9x9d8_testMUN`.`News` (
 // `NewsNumber`, 
 // `NewsTitle`, 
 // `NewsDescription`, 
@@ -65,7 +65,7 @@ while($row = $result->fetch_assoc()) {
 //     return;
 // }
 // //#003  Makes 'Feedback.php' appear in NavBar for all logged in Users
-// $queryUpdateNavBar = "UPDATE `d5g9x9d8_fredmun`.`NavBar` SET `Privacy` = 1 WHERE `ID` = 15";
+// $queryUpdateNavBar = "UPDATE `d5g9x9d8_testMUN`.`NavBar` SET `Privacy` = 1 WHERE `ID` = 15";
 // $resultNavBar = mysqli_query($con, $queryUpdateNavBar);     
 // if (!$resultNavBar) {
 //     echo "ERROR" . mysqli_error($con);

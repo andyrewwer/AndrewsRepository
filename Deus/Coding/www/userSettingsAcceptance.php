@@ -1,6 +1,6 @@
 <?php
 	if(isset($_POST['changePassword'])){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_fredmun") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Users WHERE `Users`.`UserNameID` = '". $_COOKIE['user'] . "'");
 		if ($result->num_rows > 0) {
 			$password = $_POST['pass1']; 
@@ -15,7 +15,7 @@
 						$password = $_POST['pass2a']; 
 						$password = hash("sha256", $password);
 						setcookie($cookie_name, $cookie_value, time() + (86400 * 365), "/"); // 86400 = 1 day
-						$query =  "UPDATE  `d5g9x9d8_fredmun`.`Users` SET  `pass` =  '". $password ."' WHERE  `Users`.`UserNameID` = '". $_COOKIE['user'] . "'";
+						$query =  "UPDATE  `d5g9x9d8_testMUN`.`Users` SET  `pass` =  '". $password ."' WHERE  `Users`.`UserNameID` = '". $_COOKIE['user'] . "'";
 					 	$result2 = mysqli_query($con, $query);
 						if (!$result2) {
 				   	 		header("Location: userSettings.php?message=error"); 	
