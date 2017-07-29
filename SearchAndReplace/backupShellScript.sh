@@ -26,6 +26,26 @@ sendTests() {
 	somevar= sed /T/d $file
 }
 
+readTests() {
+	echo "Hello, "$USER".  This script will register you in Michel's friends database."
+
+	# echo -n "Enter your name and press [ENTER]: "
+# 	#-n removes the new line at the end
+# 	read name
+# 	#read name, read with variable name
+# 	echo -n "Enter your gender and press [ENTER]: "
+# 	read -n 1 gender
+# 	#-n -1 means it only waits for -{number} characters
+#
+	echo -n "Enter the CD's first name and email [ENTER]: "
+	read name email
+	
+	echo $name $email
+
+	echo "$name" "$gender"
+
+}
+
 main() {
 	echo "    Enter a number between 1 and 4.
 	
@@ -44,4 +64,4 @@ main() {
 	esac
 }
 
-sendTests
+readTests

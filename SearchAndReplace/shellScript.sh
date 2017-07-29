@@ -20,12 +20,25 @@ rot13() {
 	cat $1 | tr 'A-MN-Za-mn-z' 'N-ZA-Mn-za-m' > tempFile && cat tempFile > $1 && rm tempFile && cat $1	
 }
 
-sendTests() {
-	someVar='I wish this Andrew was consistent with his casing'
-	file=test.txt
-	somevar= sed /T/d $file
+sedSubstitutionBasic() {
+	someVar='This is a test'
+	echo $someVar
+	echo $someVar | sed s/'test'/'proof'/	
 }
 
+sedSubstitutionBasicFiles(){
+	file=d5g9x9d8_LIMUN.sql
+	tempFile=$(mktemp)
+	# cat $file
+	sed s/$1/$2/ < $file > tempFile && cat tempFile > $file && rm tempFile && cat $file	
+	#where $1 is the string that will be found and replaced with $2
+}
+
+addExtention() {
+	someString=$1
+	someString='$someString.txt'
+	echo $someString
+}
 main() {
 	echo "    Enter a number between 1 and 4.
 	
@@ -44,4 +57,6 @@ main() {
 	esac
 }
 
-sendTests
+# sedSubstitutionBasicFiles $1 $2 
+
+addExtention $1

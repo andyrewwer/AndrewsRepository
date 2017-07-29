@@ -106,7 +106,7 @@ INSERT INTO `GlobalVariables` (`ID`, `VariableName`, `VariableValue`) VALUES
 (3, 'backgroundImageBackup', 'http://i.imgur.com/aICE3LU.png'),
 (4, 'CrisisHasStarted', 'Y'),
 (5, 'GoogleDoc', 'https://docs.google.com/spreadsheets/d/1ALTRgqpsiR5Roun8dBKmuapoCr1eMsZWK1YuOqa8mEI/edit?usp=sharing'),
-(6, 'CrisisName', 'FredMUN'),
+(6, 'CrisisName', 'LVMUN'),
 (7, 'DirectiveFreeze', 'F'),
 (8, 'favicon', 'http://i.imgur.com/2KMxy29.png'),
 (9, 'GoogleDocBackup', ''),
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `News` (
 --
 
 INSERT INTO `News` (`NewsNumber`, `NewsTitle`, `NewsDescription`, `NewsImage`) VALUES
-(1, 'Welcome to FredMUN Crisis.', 'We welcome you with praise. Questions? Comments?<br>
+(1, 'Welcome to LVMUN Crisis.', 'We welcome you with praise. Questions? Comments?<br>
 Email us: inquiries@muncrisis.com <br>
 You can find us on Facebook at: https://www.facebook.com/CrisisDeus/', 'http://i.imgur.com/IdYlKRi.png');
 
@@ -217,8 +217,9 @@ CREATE TABLE IF NOT EXISTS `Users` (
 --
 
 INSERT INTO `Users` (`UserNameID`, `CharacterName`, `Committee`, `pass`, `isBackroom`, `isChair`, `backroomColour`, `reservedDirective`, `id`, `LastDirective`) VALUES
-('Andrew.Weeks@me.com', 'Andrew Backroom', '2', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'a', 't', '#FCA326', NULL, 1, '2017-02-14 18:47:17'),
-('Miro.Pluckebaum@gmail.com', 'Miro Backroom', '1', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'a', '', '#FCA326', NULL, 2, '2016-12-20 14:20:52');
+('Andrew.Weeks@me.com', 'Andrew - Admin', '2', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'a', 't', '#FCA326', NULL, 1, '2017-02-14 18:47:17'),
+('Miro.Pluckebaum@gmail.com', 'Miro - Admin', '1', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'a', '', '#FCA326', NULL, 2, '2016-12-20 14:20:52'),
+('joshua.supton@gmail.com', 'Josh - Admin', '2', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'a', 't', '#FCA326', NULL, 3, '2017-02-14 18:47:17');
 
 --
 -- Indexes for dumped tables
