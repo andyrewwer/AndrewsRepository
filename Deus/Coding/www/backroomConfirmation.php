@@ -1,6 +1,6 @@
 <?php
  	function confirmForm() {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 
 		$responseTitle = str_replace("'", '', $_POST['title']);
 		$responseTitle = str_replace("\\", '', $responseTitle);
@@ -18,7 +18,7 @@
  		echo "NAME: " . $_POST['directiveValue'];
  		if ($_POST['publicOrPrivate'] === "public") {
  			echo "Public";
-	 		$query2 = "INSERT INTO  `d5g9x9d8_testMUN`.`News` (`NewsNumber` ,`NewsTitle` ,`NewsDescription`, `NewsImage` )VALUES (NULL , '" . $responseTitle . "',  '" .  $responseText ."', '". $responseImage . "');";
+	 		$query2 = "INSERT INTO  `d5g9x9d8_{{CONFERENCE_NAME}}`.`News` (`NewsNumber` ,`NewsTitle` ,`NewsDescription`, `NewsImage` )VALUES (NULL , '" . $responseTitle . "',  '" .  $responseText ."', '". $responseImage . "');";
 	 		$result2 = mysqli_query($con, $query2);
 	 		if (!$result2) {
 	    			echo "ERROR" . mysqli_error($con);
@@ -44,17 +44,17 @@
 				foreach($array as $selected){
 					if ($first === 0) { 
 			 			if ($_POST['responseValue'] === 'on') {
-					 		$query2 = "INSERT INTO  `d5g9x9d8_testMUN`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
+					 		$query2 = "INSERT INTO  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
 							'". $selected . "','".$_POST['directiveSenderName']."',  '". $_POST["directiveValue"] . "', '". $_POST['directiveNumber']."', '". $responseTitle . "',  '". $responseText . "', NULL, 'f', 't', 'f', '".$currentDate."');";
 					 		$result2 = mysqli_query($con, $query2); 	
 						}else { 
-							$query2 = "INSERT INTO  `d5g9x9d8_testMUN`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
+							$query2 = "INSERT INTO  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
 							'". $selected . "','".$_POST['directiveSenderName']."',  '". $_POST["directiveValue"] . "', '". $_POST['directiveNumber']."', '". $responseTitle . "',  '". $responseText . "', NULL, 'f', 'f', 'f', '".$currentDate."');";
 					 		$result2 = mysqli_query($con, $query2); 	
 						}
 						$first = 1;
 					}else {
-						$query2 = "INSERT INTO  `d5g9x9d8_testMUN`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
+						$query2 = "INSERT INTO  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
 							'". $selected . "','".$_POST['directiveSenderName']."',  '". $_POST["directiveValue"] . "', '". $_POST['directiveNumber']."', '". $responseTitle . "',  '". $responseText . "', NULL, 'f', 'f', 't', '".$currentDate."');";
 				 		$result2 = mysqli_query($con, $query2); 	
 
@@ -63,11 +63,11 @@
 				}
 			}else { 
 				if ($_POST['responseValue'] === 'on') {
-			 		$query2 = "INSERT INTO  `d5g9x9d8_testMUN`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
+			 		$query2 = "INSERT INTO  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
 					'". $_POST["directiveSender"] . "','".$_POST['directiveSenderName']."',  '". $_POST["directiveValue"] . "', '". $_POST['directiveNumber']."', '". $responseTitle . "',  '". $responseText . "', NULL, 'f', 't', 'f', '".$currentDate."');";
 			 		$result2 = mysqli_query($con, $query2); 	
 				}else { 
-					$query2 = "INSERT INTO  `d5g9x9d8_testMUN`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
+					$query2 = "INSERT INTO  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
 					'". $_POST["directiveSender"] . "','".$_POST['directiveSenderName']."',  '". $_POST["directiveValue"] . "', '". $_POST['directiveNumber']."', '". $responseTitle . "',  '". $responseText . "', NULL, 'f', 'f', 'f', '".$currentDate."');";
 			 		$result2 = mysqli_query($con, $query2); 	
 				}
@@ -86,7 +86,7 @@
  	}
 
  	function sendToAllInCabinet($cabinet) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$responseTitle = str_replace("'", '', $_POST['title']);
 		$responseTitle = str_replace("\\", '', $_POST['title']);
 
@@ -106,11 +106,11 @@
 			$min = $currentDate['minutes'];
 			$sec = $currentDate['seconds'];
 			$currentDate = "$date/$month/$year == $hour:$min:$sec";
-			$query2 = "INSERT INTO  `d5g9x9d8_testMUN`.`Responses` (`Recipient`, `RecipientName`, `Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
+			$query2 = "INSERT INTO  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Responses` (`Recipient`, `RecipientName`, `Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
 					'". $row['UserNameID'] . "','".$row['CharacterName']."',  'NULL', '0', '". $responseTitle . "',  '". $responseText . "', NULL, 'f', 'f','t', '".$currentDate."');";
 			if ($test === 1) { 
 				$test = 2;
-				$query2 = "INSERT INTO  `d5g9x9d8_testMUN`.`Responses` (`Recipient`, `RecipientName`, `Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
+				$query2 = "INSERT INTO  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Responses` (`Recipient`, `RecipientName`, `Directive`,`DirectiveNumber`,`Response` ,`responseDescription` ,`responseID`, `readByDelegate`, `ResponseAllowed`, `MassMessage`, `Timestamp`)VALUES (
 					'". $row['UserNameID'] . "','".$row['CharacterName']."',  'NULL', '0', '". $responseTitle . "',  '". $responseText . "', NULL, 'f', 'f','f', '".$currentDate."');";
 			}
 			
@@ -125,7 +125,7 @@
  	}
 
 
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
  	if (isset($_POST['edit'])) {
 		header('Location: backroomReserve.php');
 		$cookie_name = "responseTitle";
@@ -169,8 +169,8 @@
  	}else if (isset($_POST['confirmAndComplete'])){
 
 		// echo "Directive Number: " . $_POST['directiveNumber'] . "<br>";
- 		// $query = "UPDATE  `d5g9x9d8_testMUN`.`Directives` SET  `Status` =  'Completed', `StatusName` = 'Completed', `DirectiveColour` =  '#76EE00'  WHERE  `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
- 		$query = "UPDATE  `d5g9x9d8_testMUN`.`Directives` SET  `Status` =  'Completed', `StatusName` = '".$_COOKIE['name']."', `DirectiveColour` =  '#76EE00'  WHERE  `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
+ 		// $query = "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Directives` SET  `Status` =  'Completed', `StatusName` = 'Completed', `DirectiveColour` =  '#76EE00'  WHERE  `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
+ 		$query = "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Directives` SET  `Status` =  'Completed', `StatusName` = '".$_COOKIE['name']."', `DirectiveColour` =  '#76EE00'  WHERE  `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
 
 
  		$result = mysqli_query($con, $query);
@@ -186,7 +186,7 @@
  	}else if (isset($_POST['failAndComplete'])){
 
 		echo "Directive Number: " . $_POST['directiveNumber'] . "<br>";
- 		$query = "UPDATE  `d5g9x9d8_testMUN`.`Directives` SET  `Status` =  'Completed', `StatusName` = 'Failed', `DirectiveColour` =  '#ff0000'  WHERE  `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
+ 		$query = "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Directives` SET  `Status` =  'Completed', `StatusName` = 'Failed', `DirectiveColour` =  '#ff0000'  WHERE  `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
 
  		$result = mysqli_query($con, $query);
  		if (!$result) {

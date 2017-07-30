@@ -9,7 +9,7 @@
 // //sets it to correct timezone
 // date_default_timezone_set('Europe/London'); 
 // $currentTime = date('Y-m-d H:i:s'); // current time
-// $con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+// $con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 // $query = "SELECT * FROM GlobalVariables WHERE `VariableName` = 'DirectiveTimer'";
 // $queryUsers = "SELECT * FROM Users WHERE `UserNameID` = '" . $_COOKIE['user'] . "'";
 // $result = mysqli_query($con, $query);
@@ -51,7 +51,7 @@
 
 
 // //updates time to current. 
-// $queryUpdate = "UPDATE  `d5g9x9d8_testMUN`.`Users` SET  `LastDirective` =  '". $currentTime ."'";
+// $queryUpdate = "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Users` SET  `LastDirective` =  '". $currentTime ."'";
 // // $result2 = mysqli_query($con, $queryUpdate);
 
 

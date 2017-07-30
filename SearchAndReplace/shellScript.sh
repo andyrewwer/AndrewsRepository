@@ -47,7 +47,9 @@ main() {
 3 - swapCase
 4 - rot13
 "
-	read NUM
+	read -n 1 NUM 
+	echo 
+	echo
 	case $NUM in
 		1) toUpper $1;;
 		2) toLower $1;;
@@ -59,4 +61,4 @@ main() {
 
 # sedSubstitutionBasicFiles $1 $2 
 
-addExtention $1
+main $1

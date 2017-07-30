@@ -6,7 +6,7 @@
 
 		<link href="stylesheet.css" type ="text/css" rel ="stylesheet" />
 		<title><?php
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 
 		$globalResult = $con->query("SELECT * FROM `GlobalVariables`");
 		while($row = $globalResult->fetch_assoc()) {
@@ -32,7 +32,7 @@
 		 ?>); background-position:0% 50px;background-repeat: repeat">
 <? 
 	function createNavBar(){ 
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		if ($_COOKIE['loggedIn'] === 'YES') { 
 			if ($_COOKIE['isBackroom'] === 'f') {
 				if ($_COOKIE['isChair'] === 'f') {

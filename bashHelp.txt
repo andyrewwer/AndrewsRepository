@@ -1,4 +1,3 @@
-Look into sed (said?)
 Look into how to use a scrip to run these calls
 Look into functions (edit later)
 Look into functions (with multiple params)

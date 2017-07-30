@@ -40,7 +40,7 @@
 						<textarea type="text" name="name" id="name" class="form-control createUser" placeholder="Character Name"  /></textarea>
 						<label class="control-label" for="requestSender">Committee:</label><br>
 						<?php
-							$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+							$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 							$result = $con->query("SELECT * FROM Cabinets ORDER BY CabinetName");
 							while($row = $result->fetch_assoc()) {
 								echo "<input style='margin-left:20px;' type='radio' name='Cabinet' value=". $row['ID'] .">          " . $row['CabinetName'] . "</input><br>";
@@ -73,7 +73,7 @@
 			<?php 
 			if (isset($_GET['cabinet']) || isset($_GET['email'])) {
 
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 				$result = $con->query("SELECT * FROM Users ORDER BY CharacterName");
 				$theVariable;
 				if ($result->num_rows > 0) {
@@ -120,7 +120,7 @@
 			scrollWin();
 		</script>";
 			}else {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 				$result = $con->query("SELECT * FROM Cabinets ORDER BY CabinetName");
 				$theVariable;
 				if ($result->num_rows > 0) {
@@ -143,7 +143,7 @@
 						    <input type='hidden' name='cabinetID' value='" . $_GET['cabinet'] . "'>
 						    <textarea type='text' name='name' id='name' class='form-control createUser' placeholder='New Character Name'  /></textarea>";
 						echo "<label class='control-label' for='requestSender'>New Cabinet: </label><br>";
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 						$result = $con->query("SELECT * FROM Cabinets ORDER BY CabinetName");
 						while($row = $result->fetch_assoc()) {
 							echo "<input style='margin-left:20px;' type='radio' name='Cabinet' value=". $row['ID'] .">          " . $row['CabinetName'] . "</input><br>";
@@ -159,7 +159,7 @@
 						    <input type='hidden' name='delegateID' value='" . $_GET['email'] . "'>
 						    <input type='hidden' name='cabinetID' value='" . $_GET['cabinet'] . "'>";
 						echo "<label class='control-label' for='requestSender'>New Cabinet: </label><br>";
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 						$result = $con->query("SELECT * FROM Cabinets ORDER BY CabinetName");
 						while($row = $result->fetch_assoc()) {
 							echo "<input style='margin-left:20px;' type='radio' name='Cabinet' value=". $row['ID'] .">          " . $row['CabinetName'] . "</input><br>";
@@ -175,7 +175,7 @@
 						    <input type='hidden' name='delegateID' value='" . $_GET['email'] . "'>
 						    <input type='hidden' name='cabinetID' value='" . $_GET['cabinet'] . "'>";
 						echo "<label class='control-label' for='requestSender'>Edit Delegate Information: </label><br>";
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testMUN") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 						$result = $con->query("SELECT * FROM Users WHERE id = ".$_GET['email']);
 						while($row = $result->fetch_assoc()) {
 							echo "<i>Delegate Email:</i><br><textarea type='text' name='Email' id='name' class='form-control createUser' placeholder='Delegate Email'  />".$row['UserNameID']."</textarea>";
