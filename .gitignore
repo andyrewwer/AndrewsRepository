@@ -1,5 +1,5 @@
 .idea
 *.iml
-
+/Deus/Output/
 build
 .gradle
