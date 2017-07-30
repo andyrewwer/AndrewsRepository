@@ -18,17 +18,23 @@ readDBChoices() {
 	fi
 	
 	# echo $oldDB and $newDB
-	
-	printAllFileNames $oldDB $newDB
+	deusRenameAllDB.sh $newDB
+	deusAutoConfigDBScript.sh $newDB
 }
 
 
 main() {
 
-	readDBChoices 
-	# deusRenameAllDB.sh
-	# deusAutoConfigDBScript.sh
+	if [ -z "$1" ]
+	then
+		readDBChoices 
+		return
+	fi
+	
+	deusRenameAllDB.sh $1
+	deusAutoConfigDBScript.sh $1
+	 
 }
 
-main 
+main $1
 

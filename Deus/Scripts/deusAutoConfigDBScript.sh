@@ -1,4 +1,4 @@
-BLUE='\033[0;34m'
+YELLOW='\033[0;93m'
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
@@ -6,7 +6,7 @@ NC='\033[0m' # No Color
 
 renameConference(){
 inputFile=Database/DeusTemplateDatabaseConfig.sql
-outputFile=../DBOutput/$1.sql
+outputFile=../Output/DBOutput/provisionedDB.sql
 echo "Output file: $outputFile with crisisName: $1"
 # cat $file
 sed s/{{CONFERENCE_NAME}}/$1/ < $inputFile > $outputFile
@@ -18,7 +18,7 @@ addCrisisDirector(){
 	
 		
 renameConference $1
-file=../DBOutput/$1.sql
+file=../Output/DBOutput/provisionedDB.sql
 #forName
 #forEmail
 
@@ -34,24 +34,8 @@ echo
 echo
 }
 
-readCrisisName() {
-	echo -e "Enter the conference's name (eg YorkMUN, OxIMUN) and press [ENTER] $BLUE"
-	read crisisName
-	echo -e "$NC"
-	if [ -z "$crisisName" ]
-	then
-		echo -e "$RED You must enter a crisis name $NC"
-		echo
-		readCrisisName
-		return 1
-	fi
-
-	# echo $crisisName
-	readCrisisDirector $crisisName 
-}
-
 readCrisisDirector() {
-	echo -e "Enter the crisis director's first name and email and then press [ENTER] $BLUE"
+	echo -e "Enter the crisis director's first name and email and then press [ENTER] $YELLOW"
 	read name email
 	echo -e "$NC"
 	
@@ -76,8 +60,8 @@ readCrisisDirector() {
 }
 
 main() {
-	readCrisisName
+	readCrisisDirector $1
 }
 
-main 
+main $1
 

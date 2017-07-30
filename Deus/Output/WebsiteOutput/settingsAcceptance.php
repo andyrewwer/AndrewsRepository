@@ -1,7 +1,7 @@
 <?php
 	if(isset($_POST['rename'])){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
-		$query =  "UPDATE  `d5g9x9d8_test2AndrewForLife`.`Cabinets` SET  `CabinetName` =  '". $_POST['name'] ."' WHERE  `Cabinets`.`ID` =".$_POST['cabinetID']." LIMIT 1 ;";
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
+		$query =  "UPDATE  `d5g9x9d8_testDB`.`Cabinets` SET  `CabinetName` =  '". $_POST['name'] ."' WHERE  `Cabinets`.`ID` =".$_POST['cabinetID']." LIMIT 1 ;";
 	 	$result = mysqli_query($con, $query);
 	 	if (!$queryResult) {
   			// echo "ERROR" . mysqli_error($con);
@@ -11,7 +11,7 @@
  			//success
  		}
 	}else if (isset($_POST['remove'])){
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 	$result = $con->query("SELECT * FROM  `Users` WHERE `Committee` = " . $_POST['cabinetID']);
 	$users = 0;
 		if ($result->num_rows > 0) {
@@ -55,8 +55,8 @@
 		//check there are NO users in the removed cabinet. 
 
 	}else if (isset($_POST['create'])){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
-		$query =  "INSERT INTO `d5g9x9d8_test2AndrewForLife`.`Cabinets` (`ID`, `CabinetName`) VALUES (NULL, '".$_POST['name']."');";
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
+		$query =  "INSERT INTO `d5g9x9d8_testDB`.`Cabinets` (`ID`, `CabinetName`) VALUES (NULL, '".$_POST['name']."');";
 	 	$result = mysqli_query($con, $query);
 	 	if ($result) {
 		 	header("Location: settings.php?message=create");
@@ -67,11 +67,11 @@
 	}else if (isset($_POST['bgImagebtn'])){
 		if (endsWith($_POST['bgImage'], '.png') || endsWith($_POST['bgImage'], '.jpg')){
 			setcookie("bgImageText", "", time() - 1, "/"); // 86400 = 1 day
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 			$userResult = $con->query("SELECT * FROM GlobalVariables WHERE `VariableName` = 'backgroundImage'");
 			while ($row = $userResult->fetch_assoc()){
-				$query =  "UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$_POST['bgImage']. "' WHERE `GlobalVariables`.`VariableName` = 'backgroundImage';";
-				$query2 = " UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$row['VariableValue']."' WHERE `GlobalVariables`.`VariableName` = 'backgroundImageBackup';";
+				$query =  "UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$_POST['bgImage']. "' WHERE `GlobalVariables`.`VariableName` = 'backgroundImage';";
+				$query2 = " UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$row['VariableValue']."' WHERE `GlobalVariables`.`VariableName` = 'backgroundImageBackup';";
 			 	$result = mysqli_query($con, $query);
 		 			die(mysqli_error($con));
 			 	$result2 = mysqli_query($con, $query2);
@@ -92,8 +92,8 @@
 		}	
 	}else if (isset($_POST['directiveTimerbtn'])){
 		if (is_numeric($_POST['directiveTimer'])) {
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
-			$query =  "UPDATE  `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET  `VariableValue` =  '". $_POST['directiveTimer'] ."' WHERE  `GlobalVariables`.`VariableName` = 'DirectiveTimer' LIMIT 1 ;";
+			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
+			$query =  "UPDATE  `d5g9x9d8_testDB`.`GlobalVariables` SET  `VariableValue` =  '". $_POST['directiveTimer'] ."' WHERE  `GlobalVariables`.`VariableName` = 'DirectiveTimer' LIMIT 1 ;";
 		 	$result = mysqli_query($con, $query);
 		 	if ($result) {
 				header("Location: settings.php?message=directiveTimerT");
@@ -105,7 +105,7 @@
 			header("Location: settings.php?message=directiveTimerF");
 		}
 	}else if (isset($_POST['bgImageRevert'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$userResult = $con->query("SELECT * FROM `GlobalVariables`");
 		$newBackup;
 		$newCurrent;
@@ -116,8 +116,8 @@
 				$newCurrent = $row['VariableValue'];
 			}
 		}		
-		$query =  "UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$newCurrent. "' WHERE `GlobalVariables`.`VariableName` = 'backgroundImage';";
-		$query2 = " UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$newBackup."' WHERE `GlobalVariables`.`VariableName` = 'backgroundImageBackup';";
+		$query =  "UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$newCurrent. "' WHERE `GlobalVariables`.`VariableName` = 'backgroundImage';";
+		$query2 = " UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$newBackup."' WHERE `GlobalVariables`.`VariableName` = 'backgroundImageBackup';";
 	 	$result = mysqli_query($con, $query);
 	 	$result2 = mysqli_query($con, $query2);
 	 	if ($result) {
@@ -132,13 +132,13 @@
  			die(mysqli_error($con));
  		}
 	}else if (isset($_POST['startCrisis'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Users");
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
 				emailPerson($row['id'], $row['UserNameID'] , '1');
 			}
-			$query =  "UPDATE  `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET  `VariableValue` =  'Y' WHERE  `GlobalVariables`.`VariableName` = 'CrisisHasStarted' LIMIT 1 ;";
+			$query =  "UPDATE  `d5g9x9d8_testDB`.`GlobalVariables` SET  `VariableValue` =  'Y' WHERE  `GlobalVariables`.`VariableName` = 'CrisisHasStarted' LIMIT 1 ;";
 	 		$result = mysqli_query($con, $query); 
 		 	if ($result) {
 				header("Location: settings.php?message=startCrisis");
@@ -149,7 +149,7 @@
 		}
 
 	} else if (isset($_POST['emailReset']))	{///THIS IS FROM HELP.PHP DFKLJNSDFKNJSDFKNSBFLKJSDFSDKJNFSDLKFN ________________________________________________________________________________________________________
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Users");
 		if ($result->num_rows > 0) {
 			$isTrue = 'false';
@@ -166,8 +166,8 @@
 			}
 		}
 	}else if (isset($_POST['directiveFreeze'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
-		$query =  "UPDATE  `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET  `VariableValue` =  '".$_POST['directiveFreeze']."' WHERE  `GlobalVariables`.`VariableName` = 'DirectiveFreeze' LIMIT 1 ;";
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
+		$query =  "UPDATE  `d5g9x9d8_testDB`.`GlobalVariables` SET  `VariableValue` =  '".$_POST['directiveFreeze']."' WHERE  `GlobalVariables`.`VariableName` = 'DirectiveFreeze' LIMIT 1 ;";
 		$result = mysqli_query($con, $query); 
 		// if ($result) {
 		//  		}else {
@@ -185,11 +185,11 @@
 	 		}
 		}
 	}else if (isset($_POST['sheetbtn'])){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$userResult = $con->query("SELECT * FROM GlobalVariables WHERE `VariableName` = 'GoogleDoc'");
 		while ($row = $userResult->fetch_assoc()){
-			$query =  "UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$_POST['sheet']. "' WHERE `GlobalVariables`.`VariableName` = 'GoogleDoc';";
-			$query2 = " UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$row['VariableValue']."' WHERE `GlobalVariables`.`VariableName` = 'GoogleDocBackup';";
+			$query =  "UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$_POST['sheet']. "' WHERE `GlobalVariables`.`VariableName` = 'GoogleDoc';";
+			$query2 = " UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$row['VariableValue']."' WHERE `GlobalVariables`.`VariableName` = 'GoogleDocBackup';";
 		 	$result = mysqli_query($con, $query);
 		 	$result2 = mysqli_query($con, $query2);
 		 	if ($result2) {
@@ -201,7 +201,7 @@
 		}		
 
 	}else if (isset($_POST['sheetRevert'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$userResult = $con->query("SELECT * FROM `GlobalVariables`");
 		$newBackup;
 		$newCurrent;
@@ -212,8 +212,8 @@
 				$newCurrent = $row['VariableValue'];
 			}
 		}		
-		$query =  "UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$newCurrent. "' WHERE `GlobalVariables`.`VariableName` = 'GoogleDoc';";
-		$query2 = " UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$newBackup."' WHERE `GlobalVariables`.`VariableName` = 'GoogleDocBackup';";
+		$query =  "UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$newCurrent. "' WHERE `GlobalVariables`.`VariableName` = 'GoogleDoc';";
+		$query2 = " UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$newBackup."' WHERE `GlobalVariables`.`VariableName` = 'GoogleDocBackup';";
 	 	$result = mysqli_query($con, $query);
 	 	$result2 = mysqli_query($con, $query2);
 	 	if ($result) {
@@ -230,11 +230,11 @@
 	}else if (isset($_POST['faviconbtn'])){
 		if (endsWith($_POST['favicon'], '.png') || endsWith($_POST['favicon'], '.jpg')){
 			setcookie("faviconText", "", time() - 1, "/"); // 86400 = 1 day
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 			$userResult = $con->query("SELECT * FROM GlobalVariables WHERE `VariableName` = 'favicon'");
 			while ($row = $userResult->fetch_assoc()){
-				$query =  "UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$_POST['favicon']. "' WHERE `GlobalVariables`.`VariableName` = 'favicon';";
-				$query2 = " UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$row['VariableValue']."' WHERE `GlobalVariables`.`VariableName` = 'faviconBackup';";
+				$query =  "UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$_POST['favicon']. "' WHERE `GlobalVariables`.`VariableName` = 'favicon';";
+				$query2 = " UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$row['VariableValue']."' WHERE `GlobalVariables`.`VariableName` = 'faviconBackup';";
 			 	$result = mysqli_query($con, $query);
 			 	$result2 = mysqli_query($con, $query2);
 			 	if ($result2) {
@@ -252,7 +252,7 @@
 			header("Location: settings.php?message=faviconF");
 		}	
 	}else if (isset($_POST['faviconRevert'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$userResult = $con->query("SELECT * FROM `GlobalVariables`");
 		$newBackup;
 		$newCurrent;
@@ -263,8 +263,8 @@
 				$newCurrent = $row['VariableValue'];
 			}
 		}		
-		$query =  "UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$newCurrent. "' WHERE `GlobalVariables`.`VariableName` = 'favicon';";
-		$query2 = " UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$newBackup."' WHERE `GlobalVariables`.`VariableName` = 'faviconBackup';";
+		$query =  "UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$newCurrent. "' WHERE `GlobalVariables`.`VariableName` = 'favicon';";
+		$query2 = " UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$newBackup."' WHERE `GlobalVariables`.`VariableName` = 'faviconBackup';";
 	 	$result = mysqli_query($con, $query);
 	 	$result2 = mysqli_query($con, $query2);
 	 	if ($result) {
@@ -284,7 +284,7 @@
 	}
 
 	function emailPerson($id, $email, $type){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$password = generatePassword();
 		//HERE NEED TO EMAIL THE PERSON 
 
@@ -293,7 +293,7 @@
 	//	HERE IS WHERE WE ACCESS THE GLOBALVARIABLES DB. Get THE NAME OF THE CURRENT CRISIS. ADD IT TO TITLE.
 
 		$to = $email;
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$globalResult = $con->query("SELECT * FROM `GlobalVariables` WHERE `VariableName` = 'CrisisName'");
 		if ($type === '1') {
 			while($row = $globalResult->fetch_assoc()) {
@@ -351,7 +351,7 @@ MUNCrisis Webmaster';
 		// echo "<br>" . $to;
 		$password = encryptPassword($password);
 		//HERE NEED TO SET THE PASSWORD
-		$query =  "UPDATE  `d5g9x9d8_test2AndrewForLife`.`Users` SET  `pass` =  '".$password."' WHERE  `Users`.`id` = ".$id." LIMIT 1 ;";
+		$query =  "UPDATE  `d5g9x9d8_testDB`.`Users` SET  `pass` =  '".$password."' WHERE  `Users`.`id` = ".$id." LIMIT 1 ;";
  		$result = mysqli_query($con, $query);#000000 uncomment me
  		// echo $query;
 	

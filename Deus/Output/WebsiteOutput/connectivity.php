@@ -1,6 +1,6 @@
 <?php
 	function SignIn() { 
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 	$ID = $_POST['user'];
 		$result = $con->query("SELECT * FROM Users");
 		if ($result->num_rows > 0) {
@@ -76,10 +76,10 @@
 	if(isset($_POST['submit'])) { 
 		SignIn(); 
 	}else if (isset($_POST['reserve'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$location = "Location: profile.php?privatemessage=".$_POST['directiveNumber'];
 		
-		$query = "UPDATE  `d5g9x9d8_test2AndrewForLife`.`Responses` SET  `readByDelegate` =  't' WHERE  `Responses`.`responseID` =". $_POST['directiveNumber'] . " LIMIT 1 ";
+		$query = "UPDATE  `d5g9x9d8_testDB`.`Responses` SET  `readByDelegate` =  't' WHERE  `Responses`.`responseID` =". $_POST['directiveNumber'] . " LIMIT 1 ";
 		$result = mysqli_query($con, $query);
 		if (!$result) {
 				header("Location: profile.php?error=error");
@@ -88,9 +88,9 @@
 				header($location);
 	   		}
 	}else if (isset($_POST['unReserve'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$location = "Location: profile.php?privatemessage=".$_POST['directiveNumber'];
-		$query = "UPDATE  `d5g9x9d8_test2AndrewForLife`.`Responses` SET  `readByDelegate` =  'f' WHERE  `Responses`.`responseID` =". $_POST['directiveNumber'] . " LIMIT 1 ";
+		$query = "UPDATE  `d5g9x9d8_testDB`.`Responses` SET  `readByDelegate` =  'f' WHERE  `Responses`.`responseID` =". $_POST['directiveNumber'] . " LIMIT 1 ";
 		$result = mysqli_query($con, $query);
 		if (!$result) {
 				header("Location: profile.php?error=error");
@@ -110,10 +110,10 @@
 			// $image = str_replace(">", '', $image);
 
 
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 			$location = "Location: index.php?message=".$_POST['newsNumber']."&error=editT";
 			// header($location);
-			$query = "UPDATE  `d5g9x9d8_test2AndrewForLife`.`News` SET  `NewsTitle` =  '" .$title ."',
+			$query = "UPDATE  `d5g9x9d8_testDB`.`News` SET  `NewsTitle` =  '" .$title ."',
 			`NewsDescription` =  '". nl2br($description) . "', `NewsImage` = '".$image. "' WHERE  `News`.`NewsNumber` =" . $_POST['newsNumber'] ." LIMIT 1 ;";	 		
 			$result = mysqli_query($con, $query);	
 			if (!$result) {
@@ -130,9 +130,9 @@
 
 	}else if (isset($_POST['deleteNewsItem'])){
 							 	// <input type='hidden' name='newsNumber' value='" . $aNumber . "''>;
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 			$location = "Location: index.php?error=deleteT";
-			$query = "DELETE FROM `d5g9x9d8_test2AndrewForLife`.`News` WHERE NewsNumber=".$_POST['newsNumber'];
+			$query = "DELETE FROM `d5g9x9d8_testDB`.`News` WHERE NewsNumber=".$_POST['newsNumber'];
 			$result = mysqli_query($con, $query);	
 			if (!$result) {
 				header("Location: index.php?error=deleteF");
@@ -144,11 +144,11 @@
 		//THISF SFNSD:KN EF:KN WHAT I"M DOING NOW 
 
 	}else if (isset($_POST['changeWorldMapImage'])){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$userResult = $con->query("SELECT * FROM GlobalVariables WHERE `VariableName` = 'worldMap'");
 		while ($row = $userResult->fetch_assoc()){
-			$query =  "UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$_POST['image']. "' WHERE `GlobalVariables`.`VariableName` = 'worldMap';";
-			$query2 = " UPDATE `d5g9x9d8_test2AndrewForLife`.`GlobalVariables` SET `VariableValue` = '".$row['VariableValue']."' WHERE `GlobalVariables`.`VariableName` = 'worldMapBackup';";
+			$query =  "UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$_POST['image']. "' WHERE `GlobalVariables`.`VariableName` = 'worldMap';";
+			$query2 = " UPDATE `d5g9x9d8_testDB`.`GlobalVariables` SET `VariableValue` = '".$row['VariableValue']."' WHERE `GlobalVariables`.`VariableName` = 'worldMapBackup';";
 		 	$result = mysqli_query($con, $query);
 		 	$result2 = mysqli_query($con, $query2);
 		 	if ($result2) {

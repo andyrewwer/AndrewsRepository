@@ -23,7 +23,7 @@
 	<div class="list-group" id="listgroupJSItem">
 	<h4 style="	text-align: center;"> Delegate Directives: </h4>
 	<?php 
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$queryTitle =  "SELECT * FROM Directives WHERE Status = 'Frozen' AND DirectiveCommittee = '".$_COOKIE['committee']."' ORDER BY DirectiveNumber";
 		$result = $con->query($queryTitle);
 		$cabinetResult = $con->query("SELECT * FROM Cabinets");

@@ -1,6 +1,6 @@
 <?php
 	function createUsers() {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Users");
 		if ($result->num_rows > 0) {
 			$myArray = array();
@@ -18,7 +18,7 @@
 				$characterName = str_replace("'", '', $_POST['name']);
 				$characterName = str_replace(">", '', $characterName);
 				$committee = $_POST['Cabinet'];
-				$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+				$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 				$isBackroom = 'f';
 				if ($committee === 'b') {
 					$isBackroom = 't';
@@ -32,7 +32,7 @@
 				}else {
 					$isChair = 'f';
 				}
-							$query = "INSERT INTO  `d5g9x9d8_test2AndrewForLife`.`Users` (
+							$query = "INSERT INTO  `d5g9x9d8_testDB`.`Users` (
 					`UserNameID` ,
 					`CharacterName` ,
 					`Committee` ,
@@ -61,7 +61,7 @@
 				while($row = $globalResult->fetch_assoc()) {
 					$crisisNameTwo = $row['VariableValue'];
 				}
-				$query2 = "INSERT INTO  `d5g9x9d8_test2AndrewForLife`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response`,`responseDescription` ,`responseID` ,`readByDelegate`, `ResponseAllowed`, `Timestamp`)VALUES ('".$username ."','".$characterName."', 'Original Directive','0',  'Welcome to ". $crisisNameTwo.	" Crisis.', 'All your personal messages will arrive here on the right. When the back room responds  to your directive. Its original text will appear below. To your right you will be able to see all public responses (visible to everyone). If you read something on public news - it is true and the word of the backroom. To submit a telegram; simply click the tab at the top; fill in the aspects and youre off! Any further questions should be addressed to your chair or backroom staff all of whom will have more information.', NULL ,  'f', 'f', '".$currentDate."');";
+				$query2 = "INSERT INTO  `d5g9x9d8_testDB`.`Responses` (`Recipient`, `RecipientName`,`Directive`,`DirectiveNumber`,`Response`,`responseDescription` ,`responseID` ,`readByDelegate`, `ResponseAllowed`, `Timestamp`)VALUES ('".$username ."','".$characterName."', 'Original Directive','0',  'Welcome to ". $crisisNameTwo.	" Crisis.', 'All your personal messages will arrive here on the right. When the back room responds  to your directive. Its original text will appear below. To your right you will be able to see all public responses (visible to everyone). If you read something on public news - it is true and the word of the backroom. To submit a telegram; simply click the tab at the top; fill in the aspects and youre off! Any further questions should be addressed to your chair or backroom staff all of whom will have more information.', NULL ,  'f', 'f', '".$currentDate."');";
 					$result2 = mysqli_query($con, $query2);
 				}
 				$result = mysqli_query($con, $query);
@@ -109,7 +109,7 @@
 		}
 	}else if (isset($_POST['changeCabinet'])) {
 		if (isset($_POST['Cabinet'])) {
-		 	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		 	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 			$result = $con->query("SELECT * FROM Users WHERE `Users`.`id` =".$_POST['delegateID'].";");
 				while($userRow = $result->fetch_assoc()) {
 					if ($userRow['isBackroom'] === 'a') {
@@ -120,18 +120,18 @@
 				// echo "oops";
 		 	$cabinet = $_POST['Cabinet'];
 		 	if ($cabinet === 'backroom') {
-				$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+				$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 
-		 		$query = "UPDATE `d5g9x9d8_test2AndrewForLife`.`Users` SET `isBackroom` = 't', `backroomColour` = '#FCA326' WHERE `Users`.`id` =" .$_POST['delegateID'] ." LIMIT 1";
+		 		$query = "UPDATE `d5g9x9d8_testDB`.`Users` SET `isBackroom` = 't', `backroomColour` = '#FCA326' WHERE `Users`.`id` =" .$_POST['delegateID'] ." LIMIT 1";
 
 		 	}else {
-				$query =  "UPDATE  `d5g9x9d8_test2AndrewForLife`.`Users` SET  `Committee` =  '". $cabinet ."',
+				$query =  "UPDATE  `d5g9x9d8_testDB`.`Users` SET  `Committee` =  '". $cabinet ."',
 `isBackroom` =  'f',
 `backroomColour` =  '#FCA326', reservedDirective = '' WHERE  `Users`.`id` =".$_POST['delegateID']." LIMIT 1 ;";
 
 				$changedUserResult = $con->query("SELECT * FROM Users WHERE `Users`.`id` = ". $_POST['delegateID']);
 				while($row = $changedUserResult->fetch_assoc()) {
-					$removeReservedDirective = "UPDATE `d5g9x9d8_test2AndrewForLife`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Status` = '".$row['UserNameID']."';";
+					$removeReservedDirective = "UPDATE `d5g9x9d8_testDB`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Status` = '".$row['UserNameID']."';";
 				 	$resultNew = mysqli_query($con, $removeReservedDirective);
 					if ($resultNew) {
 			 		}else {
@@ -159,13 +159,13 @@
 
 	}else if (isset($_POST['killRevive'])) {
 		if (isset($_POST['Cabinet']) && isset($_POST['name']) && $_POST['name'] !== "") {
-		 	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		 	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 //		 	echo "Cabinet: " . $_POST['cabinet'];
 			$name = $_POST['name'];
 			if (isset($_POST['Chair']) && $_POST['Chair'] === 'Yes') {
-				$query = "UPDATE  `d5g9x9d8_test2AndrewForLife`.`Users` SET  `CharacterName` =  '". $name."',`Committee` =  '". $_POST['Cabinet'] ."',`isBackroom` = 'f', `BackroomColour` = '#FCA326', reservedDirective = '', `isChair` = 't' WHERE  `Users`.`id` =". $_POST['delegateID'] . " LIMIT 1 ;";			
+				$query = "UPDATE  `d5g9x9d8_testDB`.`Users` SET  `CharacterName` =  '". $name."',`Committee` =  '". $_POST['Cabinet'] ."',`isBackroom` = 'f', `BackroomColour` = '#FCA326', reservedDirective = '', `isChair` = 't' WHERE  `Users`.`id` =". $_POST['delegateID'] . " LIMIT 1 ;";			
 			}else {
-				$query = "UPDATE  `d5g9x9d8_test2AndrewForLife`.`Users` SET  `CharacterName` =  '". $name."',`Committee` =  '". $_POST['Cabinet'] ."',`isBackroom` = 'f', `BackroomColour` = '#FCA326', reservedDirective = '', `isChair` = 'f' WHERE  `Users`.`id` =". $_POST['delegateID'] . " LIMIT 1 ;";			
+				$query = "UPDATE  `d5g9x9d8_testDB`.`Users` SET  `CharacterName` =  '". $name."',`Committee` =  '". $_POST['Cabinet'] ."',`isBackroom` = 'f', `BackroomColour` = '#FCA326', reservedDirective = '', `isChair` = 'f' WHERE  `Users`.`id` =". $_POST['delegateID'] . " LIMIT 1 ;";			
 			}
 		 	$result = mysqli_query($con, $query);
 						$location = "Location: createUser.php?message=selectCabinetY"; 
@@ -185,7 +185,7 @@
 			    	if ($_POST['name'] === $row['CharacterName']){
 			    		// echo "Username: " . $row['UserNameID'];
 			    		$username = $row['UserNameID']; 
-			    		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+			    		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 						$searchQuery = "SELECT * FROM  Cabinets WHERE ID = ". $_POST['Cabinet'];
 						$result = $con->query($searchQuery);
 						while($row2 = $result->fetch_assoc()) {
@@ -203,7 +203,7 @@ date_default_timezone_set('Europe/London'); // CDT
 			$currentDate = "$date/$month/$year == $hour:$min:$sec";
 
 
-    					$query2 = "INSERT INTO  `d5g9x9d8_test2AndrewForLife`.`Responses` (
+    					$query2 = "INSERT INTO  `d5g9x9d8_testDB`.`Responses` (
 						`Recipient` ,
 						`RecipientName`,
 						`Directive` ,
@@ -228,7 +228,7 @@ date_default_timezone_set('Europe/London'); // CDT
 			}
 			$changedUserResult = $con->query("SELECT * FROM Users WHERE `Users`.`id` = ". $_POST['delegateID']);
 			while($row = $changedUserResult->fetch_assoc()) {
-				$removeReservedDirective = "UPDATE `d5g9x9d8_test2AndrewForLife`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Status` = '".$row['UserNameID']."';";
+				$removeReservedDirective = "UPDATE `d5g9x9d8_testDB`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Status` = '".$row['UserNameID']."';";
 			 	$resultNew = mysqli_query($con, $removeReservedDirective);
 				if ($resultNew) {
 		 		}else {
@@ -242,7 +242,7 @@ date_default_timezone_set('Europe/London'); // CDT
 		}			
 	}else if (isset($_POST['deleteDelegate'])){
 		// echo "Delete Character";
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$deleteQuery = 'DELETE FROM Users WHERE id =' .$_POST['delegateID'];
 		// echo "<br>". $deleteQuery;
 		$queryResult = mysqli_query($con, $deleteQuery);
@@ -272,7 +272,7 @@ date_default_timezone_set('Europe/London'); // CDT
 		$username = str_replace(">", '', $username);
 		$username = str_replace(" ", '', $username);
 
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test2AndrewForLife") or die(mysql_error());
+		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_testDB") or die(mysql_error());
 		$updateQuery = "UPDATE Users SET `UserNameID` = '".$username."', `CharacterName` = '".$_POST['CharacterName']."' WHERE `Users`.`id` = " .$_POST['delegateID'];
 		// echo "<br>". $deleteQuery;
 		$updateQueryResult = mysqli_query($con, $updateQuery);
