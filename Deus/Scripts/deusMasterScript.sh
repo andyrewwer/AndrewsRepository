@@ -19,7 +19,24 @@ readDBChoices() {
 	
 	# echo $oldDB and $newDB
 	deusRenameAllDB.sh $newDB
-	deusAutoConfigDBScript.sh $newDB
+	readCrisisDirector $newDB
+}
+
+readCrisisDirector() {
+	echo -e "Enter the crisis director's first name and email and then press [ENTER] $YELLOW"
+	read name email
+	echo -e "$NC"
+	
+	if [ -z "$email" ]
+	then
+		echo -e "$RED There was an error in your request. Make sure you have a first name and email $NC"
+		echo
+		readCrisisDirector $1
+		return 2
+	fi
+	
+	# echo $name $email
+	deusAutoConfigDBScript $1 $name $email
 }
 
 
@@ -32,9 +49,18 @@ main() {
 	fi
 	
 	deusRenameAllDB.sh $1
-	deusAutoConfigDBScript.sh $1
-	 
+	
+	if [ -z "$2" ]
+	then
+		if [ -z "$1" ]
+		then
+			readCrisisDirector $1	 
+			return
+		fi
+	fi
+	
+	deusAutoConfigDBScript.sh $1 $2 $3
 }
 
-main $1
+main $1 $2 $3
 

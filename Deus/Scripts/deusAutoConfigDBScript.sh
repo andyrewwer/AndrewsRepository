@@ -34,34 +34,10 @@ echo
 echo
 }
 
-readCrisisDirector() {
-	echo -e "Enter the crisis director's first name and email and then press [ENTER] $YELLOW"
-	read name email
-	echo -e "$NC"
-	
-	if [ -z "$name" ]
-	then
-		echo -e "$RED There was an error in your request. Make sure you have a first name and email $NC"
-		echo
-		readCrisisDirector $1
-		return 2
-	fi
-	if [ -z "$email" ]
-	then
-		echo -e "$RED There was an error in your request. Make sure you have a first name and email $NC"
-		echo
-		readCrisisDirector $1
-		return 2
-	fi
-	
-	# echo $name $email
-	renameConference $1
-	addCrisisDirector $1 $name $email
-}
-
 main() {
-	readCrisisDirector $1
+	renameConference $1
+	addCrisisDirector $1 $2 $3
 }
 
-main $1
+main $1 $2 $3 
 
