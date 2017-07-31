@@ -1,25 +1,46 @@
 #!/bin/bash
 
+
+#tr
+tempFile=''
+copyBackToFile() { 
+	cat $2 > $1 && rm $2 && cat $1
+}
+
+touchTempFile() { 
+	touch $1
+}
 toUpper() {
-	tempFile=$(mktemp)
-	cat $1 | tr 'a-z' 'A-Z' > tempFile && cat tempFile > $1 && rm tempFile && cat $1
+	tempFile='tempfile.txt'
+	touchTempFile $tempFile
+	cat $1 | tr 'a-z' 'A-Z' > $tempFile && copyBackToFile $1 $tempFile
 }
 
 toLower() {
-	tempFile=$(mktemp)
-	cat $1 | tr 'A-Z' 'a-z' > tempFile && cat tempFile > $1 && rm tempFile && cat $1
+	tempFile='tempfile.txt'
+	touchTempFile $tempFile
+	cat $1 | tr 'A-Z' 'a-z' > $tempFile && copyBackToFile $1 $tempFile
 }
 
 swapCase() {
-	tempFile=$(mktemp)
-	cat $1 | tr 'A-Za-z' 'a-zA-Z' > tempFile && cat tempFile > $1 && rm tempFile && cat $1	
+	tempFile='tempfile.txt'
+	touchTempFile $tempFile
+	cat $1 | tr 'A-Za-z' 'a-zA-Z' > $tempFile && copyBackToFile $1 $tempFile
 }
 
 rot13() {
-	tempFile=$(mktemp)
-	cat $1 | tr 'A-MN-Za-mn-z' 'N-ZA-Mn-za-m' > tempFile && cat tempFile > $1 && rm tempFile && cat $1	
+	tempFile='tempfile.txt'
+	touchTempFile $tempFile
+	cat $1 | tr 'A-MN-Za-mn-z' 'N-ZA-Mn-za-m' > $tempFile && copyBackToFile $1 $tempFile
 }
 
+addExtention() {
+	someString=$1
+	someString='$someString.txt'
+	echo $someString
+}
+
+#sed
 sedSubstitutionBasic() {
 	someVar='This is a test'
 	echo $someVar
@@ -31,15 +52,19 @@ sedSubstitutionBasicFiles(){
 	tempFile=$(mktemp)
 	# cat $file
 	sed s/$1/$2/ < $file > tempFile && cat tempFile > $file && rm tempFile && cat $file	
-	#where $1 is the string that will be found and replaced with $2
+	#where $1 is the string that will be found in $file and replaced with $2
 }
 
-addExtention() {
-	someString=$1
-	someString='$someString.txt'
-	echo $someString
+callFunctionFromAnotherFunction() {
+	someVar="Andrew"
+	echo "test" && anotherFunction $someVar
 }
-main() {
+
+anotherFunction() {
+	echo "Hello World" $1
+}
+
+trTesting() {
 	echo "    Enter a number between 1 and 4.
 	
 1 - toUpper
@@ -57,6 +82,10 @@ main() {
 		4) rot13 $1;;
 		*) echo "INVALID NUMBER OOPS!" ;;
 	esac
+}
+
+main() {
+	trTesting $1
 }
 
 # sedSubstitutionBasicFiles $1 $2 

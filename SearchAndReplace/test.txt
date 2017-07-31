@@ -1,6 +1,7 @@
-ABCDEFGHIKJKLMNOPQRSTUVWXYZ
-abcdefghijklmnopqrstuvwxyz
+a test file
 
-Some random sentences with BOTH Cases INTermintentYL:
+capitals
 
-THIS IS A TEST
+lowers
+
+sentencesss
