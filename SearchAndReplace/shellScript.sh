@@ -3,6 +3,7 @@
 
 #tr
 tempFile=''
+#supporting Methods
 copyBackToFile() { 
 	cat $2 > $1 && rm $2 && cat $1
 }
@@ -10,6 +11,10 @@ copyBackToFile() {
 touchTempFile() { 
 	touch $1
 }
+
+
+#-----------------------------------------------
+#tr
 toUpper() {
 	tempFile='tempfile.txt'
 	touchTempFile $tempFile
@@ -40,30 +45,6 @@ addExtention() {
 	echo $someString
 }
 
-#sed
-sedSubstitutionBasic() {
-	someVar='This is a test'
-	echo $someVar
-	echo $someVar | sed s/'test'/'proof'/	
-}
-
-sedSubstitutionBasicFiles(){
-	file=d5g9x9d8_LIMUN.sql
-	tempFile=$(mktemp)
-	# cat $file
-	sed s/$1/$2/ < $file > tempFile && cat tempFile > $file && rm tempFile && cat $file	
-	#where $1 is the string that will be found in $file and replaced with $2
-}
-
-callFunctionFromAnotherFunction() {
-	someVar="Andrew"
-	echo "test" && anotherFunction $someVar
-}
-
-anotherFunction() {
-	echo "Hello World" $1
-}
-
 trTesting() {
 	echo "    Enter a number between 1 and 4.
 	
@@ -84,10 +65,45 @@ trTesting() {
 	esac
 }
 
-main() {
-	trTesting $1
+#-----------------------------------------------
+#sed
+sedSubstitutionBasic() {
+	someVar='This is a test test'
+	echo $someVar
+	echo $someVar | sed s/'test'/'proof'/	
+	#output is This is a proof test #sed by default only catches the first instance on a given line
+	echo $someVar | sed s/'test'/'proof'/g	
+	#output is This is a proof proof #/g at the end is a param which makes it check each line
+
 }
 
-# sedSubstitutionBasicFiles $1 $2 
+sedSubstitutionBasicFiles(){
+	file=d5g9x9d8_LIMUN.sql
+	tempFile=$(mktemp)
+	# cat $file
+	sed s/$1/$2/ < $file > tempFile && cat tempFile > $file && rm tempFile && cat $file	
+	#where $1 is the string that will be found in $file and replaced with $2
+}
+
+#-----------------------------------------------
+#call A Function From another function
+callFunctionFromAnotherFunction() {
+	someVar="Andrew"
+	echo "test" && anotherFunction $someVar
+}
+
+anotherFunction() {
+	echo "Hello World" $1
+}
+
+#-----------------------------------------------
+#main
+main() {
+	sedSubstitutionBasic
+	# trTesting $1
+	# callFunctionFromAnotherFunction
+	# sedSubstitutionBasicFiles $1 $2 
+}
+
 
 main $1
