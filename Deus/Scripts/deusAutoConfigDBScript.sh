@@ -3,12 +3,31 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
+function errorCopying {
+    # re-start service
+	echo -e "$YELLOW You are probably missing the source files which are being copied";
+}
+
+function finish {
+	echo -e "$YELLOW Working";
+	exit;
+}
 
 renameConference(){
 inputFile=Database/DeusTemplateDatabaseConfig.sql
 outputFile=../Output/DBOutput/provisionedDB.sql
-echo "Output file: $outputFile with crisisName: $1"
 # cat $file
+
+cat $inputFile 2> someFile.txt
+
+if touch someFile.txt ;
+then
+	echo -e "$YELLOW error: $RED" && cat someFile.txt && echo -en "$NC"
+	rm someFile.txt
+	exit 21
+fi
+echo "Output file: $outputFile with crisisName: $1"
+
 sed s/{{CONFERENCE_NAME}}/$1/ < $inputFile > $outputFile
 echo -e "$GREEN Successfully create: $output with Crisis Name: $1 $NC"
 #where $1 is the string that will be found and replaced with $2
@@ -39,5 +58,9 @@ main() {
 	addCrisisDirector $1 $2 $3
 }
 
+trap finish 2
+trap errorCopying 21
+
 main $1 $2 $3 
 
+# //Add error handling for no params - call masterscript

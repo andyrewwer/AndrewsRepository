@@ -85,6 +85,42 @@ sedSubstitutionBasicFiles(){
 	#where $1 is the string that will be found in $file and replaced with $2
 }
 
+#This catches the error but can only output the error code. Stops application from running
+catchingExitCode() {
+	cp $inputFile $outputFile
+	if [ $? -ne 0 ] ;
+	then
+		echo -e "$YELLOW error in your request $NC"
+		exit 1;
+	fi
+}
+
+#-----------------------------------------------
+#error Handling
+
+#This catches the error, checks if the file is empty, then outputs the error. Stops application from running
+catchingError() { 
+	inputFile=$1
+	outputFile=$2
+
+	cp $inputFile $outputFile 2> someFile.txt
+	if touch someFile.txt ;
+	then
+		echo -e "$YELLOW error: $RED" && cat someFile.txt && echo -e "$NC"
+		rm someFile.txt
+		exit 1;
+	fi
+}
+
+#-----------------------------------------------
+#Trapping error codes
+function errorCopying {
+    # re-start service
+	echo -e "$YELLOW You are probably missing the source files which are being copied";
+}
+trap errorCopying EXIT
+
+
 #-----------------------------------------------
 #call A Function From another function
 callFunctionFromAnotherFunction() {
