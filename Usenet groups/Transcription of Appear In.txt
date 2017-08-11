@@ -1,0 +1,33 @@
+You probably already found this, but it's pretty cool anyways:
+ftp://ftp.isc.org/pub/usenet/
+
+(re comp.object
+
+December 15 2002 full list of all usenet groups: ftp://ftp.isc.org/pub/usenet/news.announce.newgroups/Group_Lists/20021215
+
+http://www.livinginternet.com/u/uu_arch.htm
+
+http://www.faqs.org/faqs/object-faq/announce/
+
+" A workable comp.object archive is now available on the www, with much thanks"
+
+"Comp.Object Archive: A workable comp.object archive is now available on the www, with much thanks to Markus A. Beckmann, 
+beckmann@informatik.mathematik.uni-mainz.de. http://aaimzb.mathematik.uni-mainz.de/Personal/Mitarbeiter/comp.object.idx.html"
+
+http://www.faqs.org/faqs/by-newsgroup/comp/comp.object.html
+
+https://groups.google.com/forum/#!forum/comp.object
+
+https://groups.google.com/forum/#!search/usenet$20comp.object
+
+https://books.google.com/books?id=hckt7v6g09oC&pg=PT732&lpg=PT732&dq=lamp+switch+%22comp.object%22&source=bl&ots=ITN963XVGT&sig=El_HrzpGNLbcwgsgMppj8MBJQqg&hl=en&sa=X&ved=0ahUKEwjn8dqiv87VAhUBTGMKHQKQBAgQ6AEIJjAA#v=onepage&q=lamp%20switch%20%22comp.object%22&f=false
+
+https://www.google.com/search?hl=en&as_q=lamp+switch&as_epq=%22comp.object%22+&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=all&as_sitesearch=&as_occt=any&safe=images&as_filetype=&as_rights=
+
+http://lpmuds.net/smf/index.php?topic=1244.5;wap2
+
+https://archive.org/stream/camputorsinceeboocz2/Martin,%20Robert%20C.%20-%20Agile%20Software%20Development,%20Principles,%20Patterns,%20And%20Practices_djvu.txt
+
+http://doczz.net/doc/321937/agile-principles--patterns--and-practices-in-c
+
+Found it
