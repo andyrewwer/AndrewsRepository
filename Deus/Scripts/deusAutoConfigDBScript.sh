@@ -5,6 +5,7 @@ NC='\033[0m' # No Color
 
 function errorCopying {
     # re-start service
+	echo "SADf sd "
 	echo -e "$YELLOW You are probably missing the source files which are being copied";
 }
 
@@ -24,7 +25,7 @@ if touch someFile.txt ;
 then
 	echo -e "$YELLOW error: $RED" && cat someFile.txt && echo -en "$NC"
 	rm someFile.txt
-	exit 21
+	exit 1
 fi
 echo "Output file: $outputFile with crisisName: $1"
 
@@ -58,9 +59,12 @@ main() {
 	addCrisisDirector $1 $2 $3
 }
 
+trap errorCopying 1
 trap finish 2
-trap errorCopying 21
 
 main $1 $2 $3 
 
 # //Add error handling for no params - call masterscript
+# touch has to be changed to is not empty. Of course it exists :P 
+# we are creating it
+#change messages
