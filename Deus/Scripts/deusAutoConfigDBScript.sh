@@ -1,42 +1,79 @@
 YELLOW='\033[0;93m'
+BYELLOW="\033[1;33m"
 GREEN='\033[0;32m'
 RED='\033[0;31m'
+BOLDRED="\033[1;31m"
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
 NC='\033[0m' # No Color
+count=0
 
-function errorCopying {
-    # re-start service
-	echo "SADf sd "
-	echo -e "$YELLOW You are probably missing the source files which are being copied";
+function signalInterrupted {
+	echo -e "$BOLDRED OK then, if you're sure you want to leave . . . Bye! :(";
+	read -n1
+	exit;
 }
 
-function finish {
-	echo -e "$YELLOW Working";
-	exit;
+createOutputOrExit() {
+	read -n1 createOutput
+	
+	#makesInputLowerCase
+	createOutput=$( echo $createOutput | tr 'A-Z' 'a-z' )
+	
+	#Checks If Yes
+	if [ "$createOutput" = "y" ]
+	then
+		echo -e "$CYAN OK I am now creating ../Output/DBOutput/provisionedDB.sql"
+		mkdir -p ../Output/DBOutput
+		touch ../Output/DBOutput/provisionedDB.sql;
+	#Checks If No
+	elif [ "$createOutput" = "n" ]
+	then
+		echo -e "$RED OK . . . Shuting myself off then :("
+		exit 1
+	#If not Yes or No, asks again. Up to 5 times
+	elif [ $count = 5 ]
+	then 
+		echo -e "$RED OK, I don't think you're really trying. Shutting myself off now."
+		exit 1
+	else
+		count=$((count+1))
+		echo $createdOutput
+		echo -e "$RED I'm sorry you didn't enter valid input :( \n $YELLOW Would you like me to create it for you? (Y/N)  $NC"
+		echo
+		createOutputOrExit
+		return
+	fi
 }
 
 renameConference(){
 inputFile=Database/DeusTemplateDatabaseConfig.sql
+
 outputFile=../Output/DBOutput/provisionedDB.sql
-# cat $file
 
 cat $inputFile 2> someFile.txt
 
-if touch someFile.txt ;
+if [ ! -e "someFile.txt" ] ;
 then
 	echo -e "$YELLOW error: $RED" && cat someFile.txt && echo -en "$NC"
 	rm someFile.txt
+	echo -e "$BYELLOW You are probably missing the source files which are being copied $NC";
 	exit 1
 fi
-echo "Output file: $outputFile with crisisName: $1"
 
+if [ ! -e "$outputFile" ] ;
+then
+	echo -e "$YELLOW Sorry your output file does not exist, would you like me to create it for you? (Y/N) $NC"
+	createOutputOrExit
+fi
+
+# echo "Output file: $outputFile with crisisName: $1"
 sed s/{{CONFERENCE_NAME}}/$1/ < $inputFile > $outputFile
 echo -e "$GREEN Successfully create: $output with Crisis Name: $1 $NC"
 #where $1 is the string that will be found and replaced with $2
 }
 
 addCrisisDirector(){
-	
-		
 renameConference $1
 file=../Output/DBOutput/provisionedDB.sql
 #forName
@@ -44,8 +81,8 @@ file=../Output/DBOutput/provisionedDB.sql
 
 tempFile=$(mktemp)
 
-echo "Output file: $file with crisisName: $1"
-echo "CrisisDirector: $2 withEmail: $3"
+# echo "Output file: $file with crisisName: $1"
+# echo "CrisisDirector: $2 withEmail: $3"
 
 sed s/{{CRISIS_DIRECTOR_EMAIL}}/$3/ < $file > tempFile && cat tempFile > $file && rm tempFile
 sed s/{{CRISIS_DIRECTOR_NAME}}/$2/ < $file > tempFile && cat tempFile > $file && rm tempFile
@@ -55,16 +92,16 @@ echo
 }
 
 main() {
+	if [ -z "$3" ]; then
+		echo -e "$YELLOW No input found. Expected 3, found less $NC"
+		deusMasterScript.sh
+		return;
+	fi
+
 	renameConference $1
 	addCrisisDirector $1 $2 $3
 }
 
-trap errorCopying 1
-trap finish 2
+trap signalInterrupted 2
 
 main $1 $2 $3 
-
-# //Add error handling for no params - call masterscript
-# touch has to be changed to is not empty. Of course it exists :P 
-# we are creating it
-#change messages

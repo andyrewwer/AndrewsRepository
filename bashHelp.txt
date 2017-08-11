@@ -73,3 +73,10 @@ Can have functions, have to be called within. Using main to simplify stuff now
 \n \[\e[0;33m\] |2.3.1| \[\e[0;35m\]\h \[\e[39m\]in \[\e[0;32m\]\w\n\[\e[36;1m\]±\[\e[0;32m\] \[\e[0;32m\]|master {1} U:1 \[\e[0;31m\]✗\[\e[0;32m\]| \[\e[0;32m\]→\[\e[39m\]
 
 PS1, check it out^^ 
+
+
+
+https://gist.github.com/vratiu/9780109
+^ add to Bash_aliases maybe? Or a custom import on the path :P 
+
+usenet comp.object transcripts 1994 (OO Design) <- Try to find :P 

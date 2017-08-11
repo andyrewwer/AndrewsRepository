@@ -135,8 +135,8 @@ anotherFunction() {
 #-----------------------------------------------
 #main
 main() {
-	sedSubstitutionBasic
-	# trTesting $1
+	# sedSubstitutionBasic
+	trTesting $1
 	# callFunctionFromAnotherFunction
 	# sedSubstitutionBasicFiles $1 $2 
 }
