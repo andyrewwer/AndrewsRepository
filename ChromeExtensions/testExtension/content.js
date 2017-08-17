@@ -10,8 +10,8 @@ chrome.runtime.onMessage.addListener(
             var firstHref = $("a[href^='http']").eq(0).attr("href");
 
             console.log(firstHref);
-            console.log("Ooh pretty icon");
-            console.log("HIDE THOSE LIEKS");
+
+            chrome.runtime.sendMessage({"message": "open_new_tab", "url" : firstHref});
         }
     }
 );
