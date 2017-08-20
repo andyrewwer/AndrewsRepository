@@ -1,10 +1,26 @@
 <?php 
 	$dataCon = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1") or die(mysql_error());
-	$DBnamesArray = array('AfghanistanPIMUN', 'CSUMUN', 'CardiffMUN', 'ContemporaryWarMUN', 'DamMUN', 'HaiMUN', 'HamMUN', 'HistoricalWarMUN', 'IranPIMUN', 'LIMUN', 'LSEAMUN', 'LSECuban', 'LSEFrench', 'LSENATO', 'LSEGangs', 'LSEStarWars', 'MUNICE', 'NKPIMUN', 'NancyMUN', 'SGMUN', 'ScotMUN', 'UCLMUN', 'YorkMUN', 'UoB');
+	$DBnamesArray = array('AfghanistanPIMUN', 'CSUMUN', 'CardiffMUN', 'ContemporaryWarMUN', 'DamMUN', 'HaiMUN', 'HamMUN', 'HistoricalWarMUN', 'HolyLandMUN', 'IranPIMUN', 'LIMUN', 'LSEAMUN', 'LSECuban', 'LSEFrench', 'LSENATO', 'LSEGangs', 'LSEStarWars', 'MUNICE', 'NKPIMUN', 'NancyMUN', 'SGMUN', 'ScotMUN', 'UCLMUN', 'YorkMUN', 'UoB');
 
 
 	for($arrayName = 0; $arrayName < count($DBnamesArray); $arrayName++) {
-		
+		if ($arrayName == 0) { 
+			$query = 'SELECT * FROM d5g9x9d8_' . $DBnamesArray[$arrayName];
+			echo $query;
+			$result = $db_con->query($query);
+			$fp = fopen('php://output', 'w');
+			if ($fp && $result) {
+			    header('Content-Type: text/csv');
+				$filename = 'export' . $DBnamesArray[$arrayName] . '.csv';
+			    header('Content-Disposition: attachment; filename=$filename');
+			    while ($row = $result->fetch_array(MYSQLI_NUM)) {
+			        fputcsv($fp, array_values($row));
+			    }
+			    die;
+			}
+			break;
+			return;
+		}
 
 
 		// $DBname = 'd5g9x9d8_' . $DBnamesArray[$arrayName];

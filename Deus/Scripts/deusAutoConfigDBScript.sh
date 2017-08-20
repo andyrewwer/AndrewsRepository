@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 YELLOW='\033[0;93m'
 BYELLOW="\033[1;33m"
 GREEN='\033[0;32m'
@@ -16,10 +17,10 @@ function signalInterrupted {
 
 createOutputOrExit() {
 	read -n1 createOutput
-	
+
 	#makesInputLowerCase
 	createOutput=$( echo $createOutput | tr 'A-Z' 'a-z' )
-	
+
 	#Checks If Yes
 	if [ "$createOutput" = "y" ]
 	then
@@ -33,7 +34,7 @@ createOutputOrExit() {
 		exit 1
 	#If not Yes or No, asks again. Up to 5 times
 	elif [ $count = 5 ]
-	then 
+	then
 		echo -e "$RED OK, I don't think you're really trying. Shutting myself off now."
 		exit 1
 	else
@@ -104,4 +105,5 @@ main() {
 
 trap signalInterrupted 2
 
-main $1 $2 $3 
+main $1 $2 $3
+

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 YELLOW='\033[0;93m'
 BYELLOW="\033[1;33]"
 GREEN='\033[0;32m'
@@ -18,12 +19,12 @@ function signalInterrupted {
 
 createOutputOrExit() {
 	if [ "$userChoice" = '' ]
-	then 
+	then
 		read -n1 createOutput
 		createOutput=$( echo $createOutput | tr 'A-Z' 'a-z' )
 	fi
 	#makesInputLowerCase
-	
+
 	#Checks If Yes
 	if [ "$userChoice" = "y" ] | [ "$createOutput" = "y" ]
 	then
@@ -38,7 +39,7 @@ createOutputOrExit() {
 		exit 1
 	#If not Yes or No, asks again. Up to 5 times
 	elif [[ $count = 5 ]]
-	then 
+	then
 		echo -e "$RED OK, I don't think you're really trying. Shutting myself off now."
 		exit 1
 	else
@@ -59,7 +60,7 @@ outputFile=../Output/WebsiteOutput/${inputFile##*/}
 if [ ! -e "$outputFile" ] ;
 then
 	if [ "$userChoice" = '' ]
-	then 
+	then
 		echo -e "$YELLOW Sorry your output file does not exist, would you like me to create it for you? (Y/N) $NC"
 	fi
 	createOutputOrExit $outputFile
@@ -100,7 +101,7 @@ catchingExitCode() {
 
 
 #This catches the error, checks if the file is empty, then outputs the error. Stops application from running
-catchingError() { 
+catchingError() {
 	inputFile=$1
 	outputFile=../Output/WebsiteOutput/$inputFile
 
@@ -115,7 +116,7 @@ catchingError() {
 
 printAllFileNames() {
 	for file in ../Coding/www/*; do
-		if [ ! -e $file ] 
+		if [ ! -e $file ]
 		then
 			echo -e "$YELLOW Sorry that directory is empty, please create ../Coding/www $NC"
 			rm someFile.txt
@@ -124,7 +125,6 @@ printAllFileNames() {
 	  # echo $file
 	  forFileChangeDB $file $1
 	done
-
 }
 
 main() {
@@ -135,8 +135,6 @@ main() {
 	fi
 	printAllFileNames $1
 }
-
-trap signalInterrupted 2
 
 main $1
 
