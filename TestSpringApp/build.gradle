@@ -1,0 +1,22 @@
+repositories {
+    mavenCentral()
+}
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'hello.Application'
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+dependencies {
+    compile 'org.springframework:spring-context:4.3.10.RELEASE'
+    compile "joda-time:joda-time:2.2"
+    testCompile "junit:junit:4.12"
+}
+
+jar {
+    baseName = 'gs-gradle'
+    version =  '0.1.0'
+}
