@@ -130,7 +130,7 @@ printAllFileNames() {
 main() {
 	if [ -z "$1" ]; then
 		echo -e "$YELLOW No input found. Expected 1, found 0 $NC"
-		deusMasterScript.sh
+		./deusMasterScript.sh
 		return;
 	fi
 	printAllFileNames $1

@@ -24,7 +24,7 @@ readDBChoices() {
 	fi
 	
 	# echo $oldDB and $newDB
-	deusRenameAllDB.sh $newDB
+	./deusRenameAllDB.sh $newDB
 	readCrisisDirector $newDB
 }
 
@@ -42,7 +42,7 @@ readCrisisDirector() {
 	fi
 	
 	# echo $name $email
-	deusAutoConfigDBScript.sh $1 $name $email
+	./deusAutoConfigDBScript.sh $1 $name $email
 }
 
 
@@ -54,7 +54,7 @@ main() {
 		return
 	fi
 	
-	deusRenameAllDB.sh $1
+	./deusRenameAllDB.sh $1
 	
 	if [ -z "$2" ]
 	then
@@ -65,10 +65,8 @@ main() {
 		fi
 	fi
 	
-	deusAutoConfigDBScript.sh $1 $2 $3
+	./deusAutoConfigDBScript.sh $1 $2 $3
 }
-
-trap signalInterrupted 2
 
 main $1 $2 $3
 

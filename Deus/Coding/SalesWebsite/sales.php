@@ -23,7 +23,7 @@
 	<div class = "googleForm col-sm-10">
 
 		<form method="POST" action="salesAcceptance.php" role="form" `class="form-horizontal">						<!-- Form Name -->
-			<legend><span class="googleFormSpan"></span>  	Register a Quote </legend> Interested in using Deus? If you haven't yet tried out Deus, we recommend you sign up for our Demo day on March 25th as well. <a href='demo.php' style='font-size: 1em; color:black; font-weight: none;'> Sign up here</a>! Complete this form and we will reply to you with a quote and logins for our demo website. <br><br>
+			<legend><span class="googleFormSpan"></span>  	Register a Quote </legend> Interested in using Deus? Sign up here</a>! Complete this form and we will reply to you with a quote and logins for our demo website. <br><br>
 			<!-- Multiple Radios -->
 			<div class="form-group">
 				<label class=" control-label" for="description">Your Name:</label>

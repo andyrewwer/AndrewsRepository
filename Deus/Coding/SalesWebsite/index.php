@@ -2,11 +2,12 @@
 
 <div class='googleForm'>
 	<legend>Welcome to Deus	<br> </legend>
-	<span style='font-size: 1.5em; color: #1d6731'> NOTE: We are holding a demo day on March 25th; <a href='demo.php' style='color: #1d6731; font-weight: none; text-decoration: underline;' > register here by clicking here.</a></span><br><br>
-
-	If you would like to see a demo site, please fill out the Inquiries Form. You can find what others said about us in Testimonials, more about the creators in About Us. Or a full list of conferences and some screenshots of the program below! 
+	If you are interested in using Deus, or finding out more about us. Please out our inquiries form! You can find what others said about us in Testimonials, more about the creators in About Us. Or a full list of conferences and some screenshots of the program below! 
 <br><br>
 	Or you can find out more about us on our <a href='https://www.facebook.com/CrisisDeus/' style='color: black; text-decoration: underline; font-size: 1em'> Facebook Page here!</a>  
+
+	If you are interested in Crisis, or MUN in general. You can find some guides written by dedicated MUNers <a href='https://helpmymun.com/model-united-nations-guides/' style='color: black; text-decoration: underline; font-size: 1em'> here!</a>  
+
 
 	<br><br>
 <div class='col-sm-12 col-xs-12 col-md-12'>
@@ -17,7 +18,8 @@
 </div>
 <br><br><br>
 <br><br>
-Conferences we have already helped host: <br>
+
+We have already help to host more than 30 crisis committees including:
 <ul>
 <li> CardiffMUN </li><br>
 <li> DamMUN </li><br>

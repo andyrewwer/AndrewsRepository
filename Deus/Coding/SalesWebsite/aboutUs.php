@@ -24,7 +24,7 @@
 	</div>
 	<div class='col-sm-8 col-md-8 col-xs-8' style='font-size:1.2em'>
 	
-	Miro is the reason that Deus is a success. His job is to remind the people Andrew convinced to use Deus to help support us financially so that Deus doesn't bankrupt us both. He is excellent at marketing, messaging and selling. A few little known facts about Miro, he was a born salesmen, literally, if you get him drunk you'll hear about some of the things he sold before he was born. Another fun fact: while most people have horizontal nipples, Miro in fact has vertical nipples and with his belly button they resemble a traffic light. He insures that everyone who wants to use it can do so and insures that everyone has heard about it. Outside of Deus and his degree (also PPE with Andrew, it's how they met #cute), Miro likes to play VX and falling off rock climbing structure. 
+	Miro is the reason that Deus is a success. His job is to remind the people Andrew convinced to use Deus to help support us financially so that Deus doesn't bankrupt us both. He is excellent at marketing, messaging and selling. A few little known facts about Miro, he was a born salesmen, literally, if you get him drunk you'll hear about some of the things he sold before he was born. He insures that everyone who wants to use it can do so and insures that everyone has heard about it. Outside of Deus and his degree (also PPE with Andrew, it's how they met #cute), Miro likes to play VX and falling off rock climbing structure. 
 
 	 </div>
 	</div>

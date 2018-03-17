@@ -95,7 +95,7 @@ echo
 main() {
 	if [ -z "$3" ]; then
 		echo -e "$YELLOW No input found. Expected 3, found less $NC"
-		deusMasterScript.sh
+		./deusMasterScript.sh
 		return;
 	fi
 
