@@ -1,6 +1,6 @@
 <?php
  	function confirmForm() {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 
 		$responseTitle = str_replace("'", '', $_POST['title']);
 		$responseTitle = str_replace("\\", '', $responseTitle);
@@ -86,7 +86,7 @@
  	}
 
  	function sendToAllInCabinet($cabinet) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$responseTitle = str_replace("'", '', $_POST['title']);
 		$responseTitle = str_replace("\\", '', $_POST['title']);
 
@@ -125,7 +125,7 @@
  	}
 
 
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
  	if (isset($_POST['edit'])) {
 		header('Location: backroomReserve.php');
 		$cookie_name = "responseTitle";

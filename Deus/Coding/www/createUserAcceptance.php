@@ -1,6 +1,6 @@
 <?php
 	function createUsers() {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Users");
 		if ($result->num_rows > 0) {
 			$myArray = array();
@@ -18,7 +18,7 @@
 				$characterName = str_replace("'", '', $_POST['name']);
 				$characterName = str_replace(">", '', $characterName);
 				$committee = $_POST['Cabinet'];
-				$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+				$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 				$isBackroom = 'f';
 				if ($committee === 'b') {
 					$isBackroom = 't';
@@ -109,7 +109,7 @@
 		}
 	}else if (isset($_POST['changeCabinet'])) {
 		if (isset($_POST['Cabinet'])) {
-		 	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		 	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 			$result = $con->query("SELECT * FROM Users WHERE `Users`.`id` =".$_POST['delegateID'].";");
 				while($userRow = $result->fetch_assoc()) {
 					if ($userRow['isBackroom'] === 'a') {
@@ -120,7 +120,7 @@
 				// echo "oops";
 		 	$cabinet = $_POST['Cabinet'];
 		 	if ($cabinet === 'backroom') {
-				$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+				$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 
 		 		$query = "UPDATE `d5g9x9d8_{{CONFERENCE_NAME}}`.`Users` SET `isBackroom` = 't', `backroomColour` = '#FCA326' WHERE `Users`.`id` =" .$_POST['delegateID'] ." LIMIT 1";
 
@@ -159,7 +159,7 @@
 
 	}else if (isset($_POST['killRevive'])) {
 		if (isset($_POST['Cabinet']) && isset($_POST['name']) && $_POST['name'] !== "") {
-		 	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		 	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 //		 	echo "Cabinet: " . $_POST['cabinet'];
 			$name = $_POST['name'];
 			if (isset($_POST['Chair']) && $_POST['Chair'] === 'Yes') {
@@ -185,7 +185,7 @@
 			    	if ($_POST['name'] === $row['CharacterName']){
 			    		// echo "Username: " . $row['UserNameID'];
 			    		$username = $row['UserNameID']; 
-			    		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+			    		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 						$searchQuery = "SELECT * FROM  Cabinets WHERE ID = ". $_POST['Cabinet'];
 						$result = $con->query($searchQuery);
 						while($row2 = $result->fetch_assoc()) {
@@ -242,7 +242,7 @@ date_default_timezone_set('Europe/London'); // CDT
 		}			
 	}else if (isset($_POST['deleteDelegate'])){
 		// echo "Delete Character";
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$deleteQuery = 'DELETE FROM Users WHERE id =' .$_POST['delegateID'];
 		// echo "<br>". $deleteQuery;
 		$queryResult = mysqli_query($con, $deleteQuery);
@@ -272,7 +272,7 @@ date_default_timezone_set('Europe/London'); // CDT
 		$username = str_replace(">", '', $username);
 		$username = str_replace(" ", '', $username);
 
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$updateQuery = "UPDATE Users SET `UserNameID` = '".$username."', `CharacterName` = '".$_POST['CharacterName']."' WHERE `Users`.`id` = " .$_POST['delegateID'];
 		// echo "<br>". $deleteQuery;
 		$updateQueryResult = mysqli_query($con, $updateQuery);

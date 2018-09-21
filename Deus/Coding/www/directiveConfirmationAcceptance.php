@@ -1,5 +1,5 @@
 <?php
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
  	if (isset($_POST['approve'])) {
  		$query = "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Directives` SET  `Status` =  'Available', `StatusName` = 'Available'  WHERE  `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
  		$result = mysqli_query($con, $query);

@@ -1,6 +1,6 @@
 <?php
 //HERE IS WHERE WE CHECK 
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 	$result = $con->query("SELECT * FROM  `Users` WHERE  `UserNameID` = '".$_COOKIE['user']."'");
 	while($row = $result->fetch_assoc()) {
 		if ($row['isBackroom'] !== $_COOKIE['isBackroom']){

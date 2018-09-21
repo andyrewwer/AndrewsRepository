@@ -4,7 +4,7 @@
 <?php 
 //Testing to send a message to everyone: 
 
-$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 //#001 - Send a PM response to every delegates
 date_default_timezone_set('Europe/London'); // CDT
 $currentDate = getDate();

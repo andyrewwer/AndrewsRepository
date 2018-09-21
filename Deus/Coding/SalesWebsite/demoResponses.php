@@ -6,7 +6,7 @@
 	<div class="list-group" id="listgroupJSItem">
 	<h4 style="	text-align: center;"> DEMO INTEREST STUFF: </h4>
 	<?php 
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_test") or die(mysql_error());
 		$result = $con->query("SELECT * FROM DemoInterest");
 		echo "<br>";
 		if ($result->num_rows > 0) {

@@ -2,7 +2,7 @@
 
 	if(isset($_POST['submit'])) { 
 
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test") or die(mysql_error());
+	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_test") or die(mysql_error());
 
 	//$directivesDescription = mysqli_real_escape_string($con, $_POST['description']);
 	// echo $directivesDescription;

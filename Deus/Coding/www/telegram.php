@@ -2,7 +2,7 @@
 	<h4 id="messageMe" style='color:#F00;  text-decoration: none; text-align: center; background-color: #ddd;'> 
 
 	<?php 
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 				$query = "SELECT * FROM GlobalVariables WHERE `VariableName` = 'DirectiveTimer'";
 			$queryUsers = "SELECT * FROM Users WHERE `UserNameID` = '" . $_COOKIE['user'] . "'";
 			date_default_timezone_set('Europe/London'); 
@@ -56,7 +56,7 @@
 						<legend><span class="googleFormSpan">a</span>  	Telegram Request Form - <?php 
 date_default_timezone_set('Europe/London'); 
 $currentTime = date('Y-m-d H:i:s'); // current time
-$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 $query = "SELECT * FROM GlobalVariables WHERE `VariableName` = 'DirectiveTimer'";
 $queryUsers = "SELECT * FROM Users WHERE `UserNameID` = '" . $_COOKIE['user'] . "'";
 $result = mysqli_query($con, $query);
@@ -137,7 +137,7 @@ while($row = $GlobalVarresult->fetch_assoc()) {
 								<input type="radio" name="Sender" value="Individual" onclick='hideThem()'>      Individual <br> </input>
 								<input type="radio" name="Sender" value="Committee" onclick='hideThem()' >      Committee <br> </input>
 								 <input type="radio" name="Sender" value="Multiple" onclick='showThem()' >      Multiple (Select any and all): </input> 	
-								<?php $con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+								<?php $con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 	$result = $con->query("SELECT * FROM Users WHERE isBackroom = 'f' AND Committee = '".$_COOKIE['committee']."' ORDER BY CharacterName");
 	$i = 0;
 	$count= $result->num_rows;

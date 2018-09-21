@@ -2,7 +2,7 @@
 
 	if(isset($_POST['submit'])) { 
 
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_test") or die(mysql_error());
+	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_test") or die(mysql_error());
 
 	//$directivesDescription = mysqli_real_escape_string($con, $_POST['description']);
 	// echo $directivesDescription;
@@ -17,7 +17,7 @@
 		$Other = $_POST['Sender'];
 	}
 
-	$query = "INSERT INTO `d5g9x9d8_test`.`DemoInterest` (`Q1`, `Q2`, `Q3`, `Q4`, `Slot`, `ID`) VALUES ('".nl2br($Q1)."', '".nl2br($Q2)."   |   ".$Skype."', '".nl2br($Q3)."', '".nl2br($Q4)."', '".nl2br($Other)."', NULL);"; 
+	$query = "INSERT INTO `dbilh9sp_test`.`DemoInterest` (`Q1`, `Q2`, `Q3`, `Q4`, `Slot`, `ID`) VALUES ('".nl2br($Q1)."', '".nl2br($Q2)."   |   ".$Skype."', '".nl2br($Q3)."', '".nl2br($Q4)."', '".nl2br($Other)."', NULL);"; 
 	// echo $query;
 		$result = mysqli_query($con, $query);
 		if ($result) {

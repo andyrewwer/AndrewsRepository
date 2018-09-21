@@ -6,7 +6,7 @@
 	<div class="list-group" id="listgroupJSItem">
 	<h4 style="	text-align: center;"> Responses to Delegates </h4>
 	<?php 
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Responses WHERE MassMessage = 'f' ORDER BY DirectiveNumber ASC");
 		if ($result->num_rows > 0) {
 			$current = 0;

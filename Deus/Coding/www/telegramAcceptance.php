@@ -7,7 +7,7 @@
 	$ID = $_POST['user'];
 	$Password = $_POST['pass'];
 	function submitTelegram() { 
-		 		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		 		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 
  		$directiveSender = str_replace("'", '', $_COOKIE['user']);
 		$directiveSender = str_replace(">", '', $directiveSender);
@@ -99,7 +99,7 @@ date_default_timezone_set('Europe/London'); // CDT
 		}else {
 			date_default_timezone_set('Europe/London'); 
 			$currentTime = date('Y-m-d H:i:s'); // current time
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 			$query = "SELECT * FROM GlobalVariables ";
 			$queryUsers = "SELECT * FROM Users WHERE `UserNameID` = '". $_COOKIE['user'] ."'";
 			$result = mysqli_query($con, $query);
@@ -173,14 +173,14 @@ date_default_timezone_set('Europe/London'); // CDT
 			header($loc);
 			exit;
 		}
- 		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+ 		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
  		$directiveSender = $_COOKIE['user'];
  		$directiveSenderName = $_COOKIE['name'];
 		$directiveFrom = "RESPONSE AT BACKROOM REQUEST SEE: " . $_POST['DirectiveNumber'];		
 		$directiveCommittee = $_COOKIE['committee'];
 		// echo "Directive COmmittiee " . $directiveCommittee;
 		
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Responses WHERE `responseID` = ". $_POST['responseNumber']);
    		if ($result) {
  			// echo "Success!";

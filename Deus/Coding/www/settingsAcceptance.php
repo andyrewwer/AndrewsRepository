@@ -1,6 +1,6 @@
 <?php
 	if(isset($_POST['rename'])){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$query =  "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Cabinets` SET  `CabinetName` =  '". $_POST['name'] ."' WHERE  `Cabinets`.`ID` =".$_POST['cabinetID']." LIMIT 1 ;";
 	 	$result = mysqli_query($con, $query);
 	 	if (!$queryResult) {
@@ -11,7 +11,7 @@
  			//success
  		}
 	}else if (isset($_POST['remove'])){
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 	$result = $con->query("SELECT * FROM  `Users` WHERE `Committee` = " . $_POST['cabinetID']);
 	$users = 0;
 		if ($result->num_rows > 0) {
@@ -55,7 +55,7 @@
 		//check there are NO users in the removed cabinet. 
 
 	}else if (isset($_POST['create'])){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$query =  "INSERT INTO `d5g9x9d8_{{CONFERENCE_NAME}}`.`Cabinets` (`ID`, `CabinetName`) VALUES (NULL, '".$_POST['name']."');";
 	 	$result = mysqli_query($con, $query);
 	 	if ($result) {
@@ -67,7 +67,7 @@
 	}else if (isset($_POST['bgImagebtn'])){
 		if (endsWith($_POST['bgImage'], '.png') || endsWith($_POST['bgImage'], '.jpg')){
 			setcookie("bgImageText", "", time() - 1, "/"); // 86400 = 1 day
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 			$userResult = $con->query("SELECT * FROM GlobalVariables WHERE `VariableName` = 'backgroundImage'");
 			while ($row = $userResult->fetch_assoc()){
 				$query =  "UPDATE `d5g9x9d8_{{CONFERENCE_NAME}}`.`GlobalVariables` SET `VariableValue` = '".$_POST['bgImage']. "' WHERE `GlobalVariables`.`VariableName` = 'backgroundImage';";
@@ -92,7 +92,7 @@
 		}	
 	}else if (isset($_POST['directiveTimerbtn'])){
 		if (is_numeric($_POST['directiveTimer'])) {
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 			$query =  "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`GlobalVariables` SET  `VariableValue` =  '". $_POST['directiveTimer'] ."' WHERE  `GlobalVariables`.`VariableName` = 'DirectiveTimer' LIMIT 1 ;";
 		 	$result = mysqli_query($con, $query);
 		 	if ($result) {
@@ -105,7 +105,7 @@
 			header("Location: settings.php?message=directiveTimerF");
 		}
 	}else if (isset($_POST['bgImageRevert'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$userResult = $con->query("SELECT * FROM `GlobalVariables`");
 		$newBackup;
 		$newCurrent;
@@ -132,7 +132,7 @@
  			die(mysqli_error($con));
  		}
 	}else if (isset($_POST['startCrisis'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Users");
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
@@ -149,7 +149,7 @@
 		}
 
 	} else if (isset($_POST['emailReset']))	{///THIS IS FROM HELP.PHP DFKLJNSDFKNJSDFKNSBFLKJSDFSDKJNFSDLKFN ________________________________________________________________________________________________________
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Users");
 		if ($result->num_rows > 0) {
 			$isTrue = 'false';
@@ -166,7 +166,7 @@
 			}
 		}
 	}else if (isset($_POST['directiveFreeze'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$query =  "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`GlobalVariables` SET  `VariableValue` =  '".$_POST['directiveFreeze']."' WHERE  `GlobalVariables`.`VariableName` = 'DirectiveFreeze' LIMIT 1 ;";
 		$result = mysqli_query($con, $query); 
 		// if ($result) {
@@ -185,7 +185,7 @@
 	 		}
 		}
 	}else if (isset($_POST['sheetbtn'])){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$userResult = $con->query("SELECT * FROM GlobalVariables WHERE `VariableName` = 'GoogleDoc'");
 		while ($row = $userResult->fetch_assoc()){
 			$query =  "UPDATE `d5g9x9d8_{{CONFERENCE_NAME}}`.`GlobalVariables` SET `VariableValue` = '".$_POST['sheet']. "' WHERE `GlobalVariables`.`VariableName` = 'GoogleDoc';";
@@ -201,7 +201,7 @@
 		}		
 
 	}else if (isset($_POST['sheetRevert'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$userResult = $con->query("SELECT * FROM `GlobalVariables`");
 		$newBackup;
 		$newCurrent;
@@ -230,7 +230,7 @@
 	}else if (isset($_POST['faviconbtn'])){
 		if (endsWith($_POST['favicon'], '.png') || endsWith($_POST['favicon'], '.jpg')){
 			setcookie("faviconText", "", time() - 1, "/"); // 86400 = 1 day
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 			$userResult = $con->query("SELECT * FROM GlobalVariables WHERE `VariableName` = 'favicon'");
 			while ($row = $userResult->fetch_assoc()){
 				$query =  "UPDATE `d5g9x9d8_{{CONFERENCE_NAME}}`.`GlobalVariables` SET `VariableValue` = '".$_POST['favicon']. "' WHERE `GlobalVariables`.`VariableName` = 'favicon';";
@@ -252,7 +252,7 @@
 			header("Location: settings.php?message=faviconF");
 		}	
 	}else if (isset($_POST['faviconRevert'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$userResult = $con->query("SELECT * FROM `GlobalVariables`");
 		$newBackup;
 		$newCurrent;
@@ -284,7 +284,7 @@
 	}
 
 	function emailPerson($id, $email, $type){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$password = generatePassword();
 		//HERE NEED TO EMAIL THE PERSON 
 
@@ -293,7 +293,7 @@
 	//	HERE IS WHERE WE ACCESS THE GLOBALVARIABLES DB. Get THE NAME OF THE CURRENT CRISIS. ADD IT TO TITLE.
 
 		$to = $email;
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$globalResult = $con->query("SELECT * FROM `GlobalVariables` WHERE `VariableName` = 'CrisisName'");
 		if ($type === '1') {
 			while($row = $globalResult->fetch_assoc()) {

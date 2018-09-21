@@ -21,7 +21,7 @@
 	//Go to user: Get user. See if they have reserved any. If so: Unreserve it 
 		$count = 0;
 				echo $count;
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
 				echo $count;
 
 		$result = $con->query("SELECT * FROM Responses WHERE `DirectiveNumber` = " .$_GET['directive']);
