@@ -2,7 +2,7 @@
 
 	if(isset($_POST['submit'])) { 
 
-	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_test") or die(mysql_error());
+	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_test") or die(mysql_error());
 
 	//$directivesDescription = mysqli_real_escape_string($con, $_POST['description']);
 	// echo $directivesDescription;
@@ -15,7 +15,7 @@
 	$Q7 = str_replace("'", '', $_POST['Q7']);
 	$Q8 = str_replace("'", '', $_POST['Q8']);
 
-	$query = "INSERT INTO `d5g9x9d8_test`.`Feedback` (`ID`, `Username`, `Q1`, `Q2`, `Q3`, `Q4`, `Q5`, `Q6`, `Q7`, `Q8`) VALUES (NULL, '".$_COOKIE['user']. " (" . $_COOKIE['isBackroom'].") - ". $_POST['conferenceName']."','".nl2br($Q1)."', '".nl2br($Q2)."', '".nl2br($Q3)."', '".nl2br($Q4)."', '".nl2br($Q5)."', '".nl2br($Q6)."', '".nl2br($Q7)."', '".nl2br($Q8)."');"; 
+	$query = "INSERT INTO `dbilh9sp_test`.`Feedback` (`ID`, `Username`, `Q1`, `Q2`, `Q3`, `Q4`, `Q5`, `Q6`, `Q7`, `Q8`) VALUES (NULL, '".$_COOKIE['user']. " (" . $_COOKIE['isBackroom'].") - ". $_POST['conferenceName']."','".nl2br($Q1)."', '".nl2br($Q2)."', '".nl2br($Q3)."', '".nl2br($Q4)."', '".nl2br($Q5)."', '".nl2br($Q6)."', '".nl2br($Q7)."', '".nl2br($Q8)."');"; 
 		//mysqli_query($query);
 	//echo $query. "<br><br>";
 		$result = mysqli_query($con, $query);

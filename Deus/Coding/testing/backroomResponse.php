@@ -1,5 +1,5 @@
 <?php 
-$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_demo") or die(mysql_error());
+$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_demo") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Directives ");
 			$tempFix = "UPDATE `Directives` SET `Status`='Available' WHERE Status = ''";
 				$resultTempFix = mysqli_query($con, $tempFix);
@@ -47,7 +47,7 @@ include 'header.php';?>
 
 	<h4 style="	text-align: center;"> Delegate Directives: </h4>
 	<?php 
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_demo") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_demo") or die(mysql_error());
 		$queryTitle =  "SELECT * FROM Directives";
 		$started = 0; 
 
@@ -250,7 +250,7 @@ include 'header.php';?>
 			<?php 
 			if (isset($_GET['cabinet']) || isset($_GET['email']) || isset($_GET['public'])) {
 				if ($_GET['cabinet'] === 'p') {
-					$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_demo") or die(mysql_error());
+					$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_demo") or die(mysql_error());
 					$result = $con->query("SELECT * FROM Cabinets ORDER BY CabinetName");
 					if ($result->num_rows > 0) {
 						 echo "<a class='list-group-item titleUnderline' href='backroomResponse.php'>Back</a>";
@@ -269,7 +269,7 @@ include 'header.php';?>
 							  echo $arrayElement;
 					}//send Public Announcement! 
 				}else if (isset($_GET['public'])) {
-					$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_demo") or die(mysql_error());
+					$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_demo") or die(mysql_error());
 					$result = $con->query("SELECT * FROM Cabinets ORDER BY CabinetName");
 					$theVariable = 'p';
 					if ($result->num_rows > 0) {
@@ -337,7 +337,7 @@ include 'header.php';?>
 				
 					
 				}else {
-					$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_demo") or die(mysql_error());
+					$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_demo") or die(mysql_error());
 					$result = $con->query("SELECT * FROM Users ORDER BY CharacterName");
 					$theVariable;
 					$theVariableName;
@@ -395,7 +395,7 @@ include 'header.php';?>
 			</form>";					}
 				}
 			}else {
-				$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_demo") or die(mysql_error());
+				$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_demo") or die(mysql_error());
 				$result = $con->query("SELECT * FROM Cabinets ORDER BY CabinetName");
 				if ($result->num_rows > 0) {
 					 echo "<a class='list-group-item titleUnderline'> Cabinet:</a>";

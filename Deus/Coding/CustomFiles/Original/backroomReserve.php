@@ -1,6 +1,6 @@
 <?php include 'preHeaderBackroom.php';?>
 <?php
-$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Directives");
 		if ($result->num_rows > 0) {
 			$hasADirective = "true";
@@ -27,7 +27,7 @@ $con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFER
 	    	header('Location: backroomResponse.php?message=failure');
 	    	return;
 		}
-	// $con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+	// $con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 	// $result = $con->query("SELECT * FROM  `Directives` WHERE  `Status` = '".$_COOKIE['user']."'");
 	// while($row = $result->fetch_assoc()) {
 	// 	echo $row['DirectiveNumber'];
@@ -81,11 +81,11 @@ include 'header.php';?>
 
 	}
 	function checkIfUserHasAReservedDirective(){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Directives");
 	    while($userRow = $result->fetch_assoc()) {
 	    	if ($userRow['Status'] === $_COOKIE["user"]) {
-				$query = "UPDATE `d5g9x9d8_{{CONFERENCE_NAME}}`.`Directives` SET  `Status` =  'Available', `StatusName` = 'Available', `DirectiveColour` =  '' WHERE  `Directives`.`DirectiveNumber` ='".$userRow["DirectiveNumber"] ."'";
+				$query = "UPDATE `dbilh9sp_{{CONFERENCE_NAME}}`.`Directives` SET  `Status` =  'Available', `StatusName` = 'Available', `DirectiveColour` =  '' WHERE  `Directives`.`DirectiveNumber` ='".$userRow["DirectiveNumber"] ."'";
 
 		 		$update = mysqli_query($con, $query);
 	    		//set new one to reserve! 
@@ -96,15 +96,15 @@ include 'header.php';?>
 		//unreserve any others! 
 	}
 	function reserveDirective() {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 		global $directiveRow;
 
-		$query = "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Directives` SET  `Status` =  '". $_COOKIE["user"] ."', `StatusName` = '". $_COOKIE['name'] . "',`DirectiveColour` =  '". $_COOKIE["backroomColour"] ."' WHERE  `Directives`.`DirectiveNumber` =" . $directiveRow["DirectiveNumber"]  . ";";
+		$query = "UPDATE  `dbilh9sp_{{CONFERENCE_NAME}}`.`Directives` SET  `Status` =  '". $_COOKIE["user"] ."', `StatusName` = '". $_COOKIE['name'] . "',`DirectiveColour` =  '". $_COOKIE["backroomColour"] ."' WHERE  `Directives`.`DirectiveNumber` =" . $directiveRow["DirectiveNumber"]  . ";";
  		$result = mysqli_query($con, $query);
 	}
 	function printTable() {
 		global $directiveRow;
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$cabinetResult = $con->query("SELECT * FROM Cabinets ORDER BY CabinetName");
 		$cabinetArray;
 	    while($row = $cabinetResult->fetch_assoc()) {

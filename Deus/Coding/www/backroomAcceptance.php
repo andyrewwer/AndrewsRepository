@@ -1,8 +1,8 @@
 <?php include 'preHeaderBackroom.php';?>
 <?php 
 if (isset($_POST['unreserve'])){
-	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
-	$query = "UPDATE `d5g9x9d8_{{CONFERENCE_NAME}}`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
+	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
+	$query = "UPDATE `dbilh9sp_{{CONFERENCE_NAME}}`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
 	$result = mysqli_query($con, $query);
 	if (!$result) {
 		header("Location: backroomResponse.php?message=error");
@@ -14,8 +14,8 @@ if (isset($_POST['unreserve'])){
 		if (isset($_POST['directMessage']) ||isset($_POST['publicMessage']) ) {
 			header('Location: backroomResponse.php?message=failure2');	
 		}if (isset($_POST['unreserve'])){
-			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
-			$query = "UPDATE `d5g9x9d8_{{CONFERENCE_NAME}}`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
+			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
+			$query = "UPDATE `dbilh9sp_{{CONFERENCE_NAME}}`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
 			$result = mysqli_query($con, $query);
 			if (!$result) {
 				header("Location: backroomResponse.php?message=error");
@@ -50,8 +50,8 @@ if (isset($_POST['unreserve'])){
 	echo "<h3>Please confirm your message</h3>";
 	echo "<div class='jumbotron col-xs-12 col-sm-12' id='jumbotron'>";
 	if (isset($_POST['complete'])) {
-		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
-		$query = "UPDATE `d5g9x9d8_{{CONFERENCE_NAME}}`.`Directives` SET `Status` = 'Completed', `StatusName` = 'Completed', `DirectiveColour` = '#76EE00' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$query = "UPDATE `dbilh9sp_{{CONFERENCE_NAME}}`.`Directives` SET `Status` = 'Completed', `StatusName` = 'Completed', `DirectiveColour` = '#76EE00' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
 		$result = mysqli_query($con, $query);
 		if (!$result) {
 			header("Location: backroomResponse.php?message=error");
@@ -139,7 +139,7 @@ if (isset($_POST['unreserve'])){
 
 				 echo"<br><br><h5>Confirm you would like to send this public message to EVERYONE!</h5>	";
 		}else { 
-			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 			$result = $con->query("SELECT * FROM Cabinets WHERE `ID` = " . $_POST['recipientCabinet']);	
 		    while($row = $result->fetch_assoc()) {
 				echo "<p style='font-weight: bold;'> Public Message to all Members of the: <i>" . $row['CabinetName'] . "</i><p>". $_POST['title'] . "</p>" . nl2br($_POST['description']) . "<br> <br>";	

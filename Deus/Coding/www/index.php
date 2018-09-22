@@ -29,7 +29,7 @@
 <?php include 'newsEverywhere.php';?>
 	</h3>
 	 		<?php 
-  				$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+  				$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 				$result = $con->query("SELECT * FROM News");
 				if ($result->num_rows > 0) {
 					echo "<div class='jumbotron col-xs-8 col-sm-8' id='jumbotron'>";

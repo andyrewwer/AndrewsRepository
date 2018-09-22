@@ -17,7 +17,7 @@
 
 
 	<h3 style='color:black'><b> <?php 
-		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Cabinets");
 	    while($row = $result->fetch_assoc()) {
 	    	if ($row['ID'] === $_COOKIE['committee']){
@@ -36,7 +36,7 @@
 	<div class="list-group" id="listgroupJSItem">
 <?php 
 	echo "	<h4>" . $_COOKIE['name'] . " Directive Response</h4> <br>";
-		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Responses");
 		if ($result->num_rows > 0) {
 			$myArray = array();
@@ -73,7 +73,7 @@
 		<br>
 
 		<?php 
-		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 			echo "<div class='jumbotron col-xs-5 col-sm-5' id='jumbotron'>";
 			if(is_numeric(($_GET['message']))) {
 				$result = $con->query("SELECT * FROM News");
@@ -103,7 +103,7 @@
 								     echo "		
 		     <form method='POST' action='connectivity.php' role='form' class='form-horizontal'>
      		<input type='hidden' name='directiveNumber' value=" . $row['responseID'] . ">";
-						$query = "UPDATE  `d5g9x9d8_{{CONFERENCE_NAME}}`.`Responses` SET  `readByDelegate` =  't' WHERE  `Responses`.`responseID` =". $_GET['privatemessage'];
+						$query = "UPDATE  `dbilh9sp_{{CONFERENCE_NAME}}`.`Responses` SET  `readByDelegate` =  't' WHERE  `Responses`.`responseID` =". $_GET['privatemessage'];
 						 		$result2 = mysqli_query($con, $query);
 	 					echo "<script> reduceProfileNumber(); </script>";
 
@@ -115,7 +115,7 @@
 								}
 								echo"</form>";
 								if ($row['ResponseAllowed'] === 't') {
-									$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+									$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 
 									echo "<br><br><form method='POST' action='privateResponse.php' role='form' class='form-horizontal'><button type='submit' id='singlebutton' name='respond' class='btn btn-danger'  ><b>Respond to Backroom </b></button>     		
 									<input type='hidden' name='directiveNumber' value=" . $row['DirectiveNumber'] . ">

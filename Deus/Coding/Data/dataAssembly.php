@@ -1,11 +1,11 @@
 <?php 
-	$dataCon = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1") or die(mysql_error());
+	$dataCon = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1") or die(mysql_error());
 	$DBnamesArray = array('AfghanistanPIMUN', 'CSUMUN', 'CardiffMUN', 'ContemporaryWarMUN', 'DamMUN', 'HaiMUN', 'HamMUN', 'HistoricalWarMUN', 'HolyLandMUN', 'IranPIMUN', 'LIMUN', 'LSEAMUN', 'LSECuban', 'LSEFrench', 'LSENATO', 'LSEGangs', 'LSEStarWars', 'MUNICE', 'NKPIMUN', 'NancyMUN', 'SGMUN', 'ScotMUN', 'UCLMUN', 'YorkMUN', 'UoB');
 
 
 	for($arrayName = 0; $arrayName < count($DBnamesArray); $arrayName++) {
 		if ($arrayName == 0) { 
-			$query = 'SELECT * FROM d5g9x9d8_' . $DBnamesArray[$arrayName];
+			$query = 'SELECT * FROM dbilh9sp_' . $DBnamesArray[$arrayName];
 			echo $query;
 			$result = $db_con->query($query);
 			$fp = fopen('php://output', 'w');
@@ -23,9 +23,9 @@
 		}
 
 
-		// $DBname = 'd5g9x9d8_' . $DBnamesArray[$arrayName];
+		// $DBname = 'dbilh9sp_' . $DBnamesArray[$arrayName];
 		// // echo $DBname . "<br>";
-		// $query = "INSERT INTO d5g9x9d8_data.DirectivesTest SELECT DirectiveNumber, DirectiveSender, DirectiveSenderName, DirectiveCommittee, DirectiveFrom, DirectiveType, DirectiveText, Status, Status Name, DirectiveColour, Timestamp FROM " . $DBname .".Directives";
+		// $query = "INSERT INTO dbilh9sp_data.DirectivesTest SELECT DirectiveNumber, DirectiveSender, DirectiveSenderName, DirectiveCommittee, DirectiveFrom, DirectiveType, DirectiveText, Status, Status Name, DirectiveColour, Timestamp FROM " . $DBname .".Directives";
 		// echo $query . "<br>";
 		// $result = $dataCon->query($query);
 		// if (!$result) {
@@ -33,9 +33,9 @@
 		// 	break;
 		// }
 
-		// $DBname = 'd5g9x9d8_' . $DBnamesArray[$arrayName];
+		// $DBname = 'dbilh9sp_' . $DBnamesArray[$arrayName];
 		// // echo $DBname . "<br>";
-		// $query = "INSERT INTO d5g9x9d8_data.News SELECT * FROM " . $DBname .".News";
+		// $query = "INSERT INTO dbilh9sp_data.News SELECT * FROM " . $DBname .".News";
 		// $result = $dataCon->query($query);
 		// if (!$result) {
 		// 	echo "There was an error: " . mysqli_error($dataCon);
@@ -43,7 +43,7 @@
 		// }
 		// echo $query . "<br>";
 
-		// $query = "INSERT INTO d5g9x9d8_data.Responses SELECT * FROM " . $DBname .".Responses WHERE MassMessage != 't'";
+		// $query = "INSERT INTO dbilh9sp_data.Responses SELECT * FROM " . $DBname .".Responses WHERE MassMessage != 't'";
 		// $result = $dataCon->query($query);
 		// if (!$result) {
 		// 	echo "There was an error: " . mysqli_error($dataCon);
@@ -58,7 +58,7 @@
 	// $rowNumber = 2;
 	// $rowNumber530 = 532;
 	// while ($rowNumber < 14489) {
-	// 	$query = "UPDATE `d5g9x9d8_data`.`Directives` SET `ID` = ".$rowNumber." WHERE `ID` = ".$rowNumber530;
+	// 	$query = "UPDATE `dbilh9sp_data`.`Directives` SET `ID` = ".$rowNumber." WHERE `ID` = ".$rowNumber530;
 	// 	$rowNumber++;
 	// 	$rowNumber530++;
 	// 	echo $query;
@@ -77,6 +77,6 @@
 
 // 			$tempFix = "UPDATE `Directives` SET `Status`='Available' WHERE Status = ''";
 // echo "Public";
-// 	 		$query2 = "INSERT INTO  `d5g9x9d8_demo`.`News` (`NewsNumber` ,`NewsTitle` ,`NewsDescription`, `NewsImage` )VALUES (NULL , ' " . $responseTitle . "',  '" .  $responseText ."', '". $responseImage . "');";
+// 	 		$query2 = "INSERT INTO  `dbilh9sp_demo`.`News` (`NewsNumber` ,`NewsTitle` ,`NewsDescription`, `NewsImage` )VALUES (NULL , ' " . $responseTitle . "',  '" .  $responseText ."', '". $responseImage . "');";
 // 	 		$result2 = mysqli_query($con, $query2);
 ?>

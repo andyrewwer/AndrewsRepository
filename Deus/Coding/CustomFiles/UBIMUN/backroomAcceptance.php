@@ -4,8 +4,8 @@
 		if (isset($_POST['directMessage']) ||isset($_POST['publicMessage']) ) {
 			header('Location: backroomResponse.php?message=failure2');	
 		}else if (isset($_POST['unreserve'])){
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_UoB") or die(mysql_error());
-			$query = "UPDATE `d5g9x9d8_UoB`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
+			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_UoB") or die(mysql_error());
+			$query = "UPDATE `dbilh9sp_UoB`.`Directives` SET `Status` = 'Available', `StatusName` = 'Available', `DirectiveColour` = '' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
 			$result = mysqli_query($con, $query);
 			if (!$result) {
 				header("Location: backroomResponse.php?message=error");
@@ -40,8 +40,8 @@
 	echo "<h3>Please confirm your message</h3>";
 	echo "<div class='jumbotron col-xs-12 col-sm-12' id='jumbotron'>";
 	if (isset($_POST['complete'])) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_UoB") or die(mysql_error());
-		$query = "UPDATE `d5g9x9d8_UoB`.`Directives` SET `Status` = 'Completed', `StatusName` = 'Completed', `DirectiveColour` = '#76EE00' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_UoB") or die(mysql_error());
+		$query = "UPDATE `dbilh9sp_UoB`.`Directives` SET `Status` = 'Completed', `StatusName` = 'Completed', `DirectiveColour` = '#76EE00' WHERE `Directives`.`DirectiveNumber` = " . $_POST["directiveNumber"] . " ";
 		$result = mysqli_query($con, $query);
 		if (!$result) {
 			header("Location: backroomResponse.php?message=error");
@@ -129,7 +129,7 @@
 
 				 echo"<br><br><h5>Confirm you would like to send this public message to EVERYONE!</h5>	";
 		}else { 
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_UoB") or die(mysql_error());
+			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_UoB") or die(mysql_error());
 			$result = $con->query("SELECT * FROM Cabinets WHERE `ID` = " . $_POST['recipientCabinet']);	
 		    while($row = $result->fetch_assoc()) {
 				echo "<p style='font-weight: bold;'> Public Message to all Members of the: <i>" . $row['CabinetName'] . "</i><p>". $_POST['title'] . "</p>" . nl2br($_POST['description']) . "<br> <br>";	

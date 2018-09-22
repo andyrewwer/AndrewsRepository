@@ -61,7 +61,7 @@
 	<!-- Multiple Radios -->
 	<div class="form-group">
 	<div class='col-sm-6 col-xs-6'>
-		<input type="text" name="directiveTimer" id="user" class="form-control createUser" placeholder="Current: <?php 					$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		<input type="text" name="directiveTimer" id="user" class="form-control createUser" placeholder="Current: <?php 					$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 					$result = $con->query("SELECT * FROM  `GlobalVariables` WHERE  `VariableName` = 'DirectiveTimer'");
 					while($row = $result->fetch_assoc()) {
 						echo $row['VariableValue'];
@@ -114,7 +114,7 @@
 
 
 	function printJSTable($active) {
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Cabinets ORDER BY CabinetName");
 		$theVariable;
 		if ($result->num_rows > 0) {
@@ -139,7 +139,7 @@
 	 	echo "</div></div>";
 	}
 	if (isset($_GET['cabinet'])){
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Cabinets WHERE `ID` = " . $_GET['cabinet']);
 		if ($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) 
@@ -180,7 +180,7 @@
 	<?php 
 	echo "<form method='POST' action='settingsAcceptance.php' role='form' class='form-horizontal'>";
 	echo"<br>";
-	$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_{{CONFERENCE_NAME}}") or die(mysql_error());
+	$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_{{CONFERENCE_NAME}}") or die(mysql_error());
 	$result = $con->query("SELECT * FROM GlobalVariables WHERE `VariableName` = 'CrisisHasStarted'");
 	while($row = $result->fetch_assoc()) {
 		if ($row['VariableValue'] === 'N'){

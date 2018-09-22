@@ -23,7 +23,7 @@
 
 	</h3>
 	 		<?php 
-  				$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_LIMUN") or die(mysql_error());
+  				$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_LIMUN") or die(mysql_error());
 				$result = $con->query("SELECT * FROM GlobalVariables");
 				if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()) {

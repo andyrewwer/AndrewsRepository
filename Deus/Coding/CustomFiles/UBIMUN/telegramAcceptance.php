@@ -7,7 +7,7 @@
 	$ID = $_POST['user'];
 	$Password = $_POST['pass'];
 	function submitTelegram() { 
-		 		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_UoB") or die(mysql_error());
+		 		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_UoB") or die(mysql_error());
 
  		$directiveSender = str_replace("'", '', $_COOKIE['user']);
 		$directiveSender = str_replace(">", '', $directiveSender);
@@ -91,7 +91,7 @@ NULL , '$directiveSender', '$directiveSenderName', '$directiveCommittee', '$dire
 		}else {
 			date_default_timezone_set('Europe/London'); 
 			$currentTime = date('Y-m-d H:i:s'); // current time
-			$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_UoB") or die(mysql_error());
+			$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_UoB") or die(mysql_error());
 			$query = "SELECT * FROM GlobalVariables ";
 			$queryUsers = "SELECT * FROM Users WHERE `UserNameID` = '". $_COOKIE['user'] ."'";
 			$result = mysqli_query($con, $query);
@@ -121,7 +121,7 @@ NULL , '$directiveSender', '$directiveSenderName', '$directiveCommittee', '$dire
 				if ($currentTime > $lastDirectiveAndDirectiveTimer) {
 					//allow directive
 					submitTelegram();
-					$queryUpdate = "UPDATE  `d5g9x9d8_UoB`.`Users` SET  `LastDirective` =  '". $currentTime ."' WHERE `UserNameID` = '". $_COOKIE['user'] ."'";
+					$queryUpdate = "UPDATE  `dbilh9sp_UoB`.`Users` SET  `LastDirective` =  '". $currentTime ."' WHERE `UserNameID` = '". $_COOKIE['user'] ."'";
 					$result2 = mysqli_query($con, $queryUpdate); 
 					if (!$result2) {
 						// die(mysqli_error($con));
@@ -156,14 +156,14 @@ NULL , '$directiveSender', '$directiveSenderName', '$directiveCommittee', '$dire
 			header($loc);
 			exit;
 		}
- 		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_UoB") or die(mysql_error());
+ 		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_UoB") or die(mysql_error());
  		$directiveSender = $_COOKIE['user'];
  		$directiveSenderName = $_COOKIE['name'];
 		$directiveFrom = "RESPONSE AT BACKROOM REQUEST SEE: " . $_POST['DirectiveNumber'];		
 		$directiveCommittee = $_COOKIE['committee'];
 		// echo "Directive COmmittiee " . $directiveCommittee;
 		
-		$con = mysqli_connect("localhost", "d5g9x9d8_user","1qwerty1","d5g9x9d8_UoB") or die(mysql_error());
+		$con = mysqli_connect("localhost", "dbilh9sp_user","1qwerty1","dbilh9sp_UoB") or die(mysql_error());
 		$result = $con->query("SELECT * FROM Responses WHERE `responseID` = ". $_POST['responseNumber']);
    		if ($result) {
  			// echo "Success!";
@@ -197,7 +197,7 @@ NULL , '$directiveSender', '$directiveSenderName', '$directiveCommittee', '$dire
 		$query = "INSERT INTO `Directives` (`DirectiveNumber` ,`DirectiveSender`, `DirectiveSenderName`,`DirectiveCommittee` ,`DirectiveFrom` ,`DirectiveType` ,`DirectiveText` ,`Status`, `StatusName`, `DirectiveColour`, `Timestamp`)
 		VALUES (
 		NULL , '$directiveSender', '$directiveSenderName', '$directiveCommittee', '$directiveFrom', '$directiveType', '$directivesDescription', 'Frozen', 'Frozen', '', '".$currentDate."')"; 
-		$query2 = "UPDATE `d5g9x9d8_UoB`.`Responses` SET `ResponseAllowed` = 'f' WHERE `Responses`.`Recipient` = '". $_COOKIE['user']."';";
+		$query2 = "UPDATE `dbilh9sp_UoB`.`Responses` SET `ResponseAllowed` = 'f' WHERE `Responses`.`Recipient` = '". $_COOKIE['user']."';";
 }
  		// mysqli_query($query);
  // echo $query. "<br><br>";
