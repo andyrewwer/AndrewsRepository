@@ -1,7 +1,6 @@
 #!/bin/bash
 
 
-#tr
 tempFile=''
 #supporting Methods
 copyBackToFile() { 
@@ -14,7 +13,6 @@ touchTempFile() {
 
 
 #-----------------------------------------------
-#tr
 toUpper() {
 	tempFile='tempfile.txt'
 	touchTempFile $tempFile
@@ -110,26 +108,6 @@ catchingError() {
 		rm someFile.txt
 		exit 1;
 	fi
-}
-
-#-----------------------------------------------
-#Trapping error codes
-function errorCopying {
-    # re-start service
-	echo -e "$YELLOW You are probably missing the source files which are being copied";
-}
-trap errorCopying EXIT
-
-
-#-----------------------------------------------
-#call A Function From another function
-callFunctionFromAnotherFunction() {
-	someVar="Andrew"
-	echo "test" && anotherFunction $someVar
-}
-
-anotherFunction() {
-	echo "Hello World" $1
 }
 
 #-----------------------------------------------

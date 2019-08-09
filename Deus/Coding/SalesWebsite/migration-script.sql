@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `NavBar` (
 INSERT INTO `NavBar` (`ID`, `Name`, `URL`) VALUES
 (1, 'Home', 'index.php'),
 (2, 'Deus History', 'aboutUs.php'),
-(3, 'Frequently Asked Questions', 'FAQ.php'),
+(3, 'FAQ', 'FAQ.php'),
 (4, 'Inquiries', 'sales.php');
 
 CREATE TABLE IF NOT EXISTS `Sales` (
